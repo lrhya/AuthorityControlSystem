@@ -12,7 +12,6 @@
     <modules>
         <module>front</module>
         <module>backend</module>
-        <module>reverse</module>
     </modules>
 
     <name>AuthorityControlSystem</name>
