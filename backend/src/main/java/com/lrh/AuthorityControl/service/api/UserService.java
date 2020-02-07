@@ -14,4 +14,10 @@ import java.util.List;
 public interface UserService {
     //获取用户表全部信息
     List<User> getAll();
+
+    //登录验证
+    User login(String loginAcct, String userPswd);
+
+
+
 }

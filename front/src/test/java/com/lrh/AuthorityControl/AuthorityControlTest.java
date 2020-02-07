@@ -1,5 +1,6 @@
 package com.lrh.AuthorityControl;
 
+import com.lrh.AuthorityControl.common.AuthorityControlUtils;
 import com.lrh.AuthorityControl.entity.User;
 import com.lrh.AuthorityControl.service.api.UserService;
 import org.junit.Test;
@@ -45,6 +46,5 @@ public class AuthorityControlTest {
             System.out.println(user);
         }
     }
-
 
 }
