@@ -24,6 +24,6 @@ public class UserHandler {
     public String getAll(Model model) {
         List<User> list = userService.getAll();
         model.addAttribute("list", list);
-        return "test-target";
+        return "test/test-target";    //  "/WEB-INF/pages/test/test-target"
     }
 }
