@@ -25,6 +25,9 @@
             // 对分页导航条显示进行初始化
             initPagination();
 
+            // 每一次页面最初显示的时候都会把keyword设置为最新值
+            window.keyword = "${param.keyword}";
+
         });
 
         // 声明函数封装导航条初始化操作
@@ -40,8 +43,8 @@
                 callback: pageselectCallback,	//回调函数
                 items_per_page: ${requestScope['PAGE-INFO'].pageSize},	//每页显示数据数量，就是pageSize
                 current_page: ${requestScope['PAGE-INFO'].pageNum - 1},//当前页页码
-                prev_text: "上一页",			//上一页文本
-                next_text: "下一页"			//下一页文本
+                prev_text: "before",			//上一页文本
+                next_text: "next"			//下一页文本
             };
 
             // 显示分页导航条
@@ -77,7 +80,7 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <form action="user/query/for/search.html" class="form-inline" role="form" style="float: left;"
+                    <form action="user/to/page" class="form-inline" role="form" style="float: left;"
                           method="post">
                         <div class="form-group has-feedback">
                             <div class="input-group">
@@ -111,8 +114,10 @@
                                 <th width="30">#</th>
                                 <th width="30"><input id="summaryBox" type="checkbox"></th>
                                 <th>账号</th>
-                                <th>名称</th>
+                                <th>用户名</th>
                                 <th>邮箱地址</th>
+                                <th>组织</th>
+                                <th>部门</th>
                                 <th width="100">操作</th>
                             </tr>
                             </thead>
@@ -130,6 +135,8 @@
                                         <td>${user.loginAcct }</td>
                                         <td>${user.userName }</td>
                                         <td>${user.userEmail }</td>
+                                        <td>${user.departFather }</td>
+                                        <td>${user.departSon }</td>
                                         <td>
                                             <button type="button" class="btn btn-success btn-xs">
                                                 <i class=" glyphicon glyphicon-check"></i>
@@ -147,7 +154,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <td colspan="6" align="center">
+                                <td colspan="8" align="center">
                                     <div id="Pagination" class="pagination">
                                         <!-- 这里显示分页 -->
                                     </div>

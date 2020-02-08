@@ -15,6 +15,7 @@
                                 class="btn btn-default btn-success dropdown-toggle"
                                 data-toggle="dropdown">
                             <i class="glyphicon glyphicon-user"></i>
+                            ${sessionScope['LOGIN-ADMIN'].userName }
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
