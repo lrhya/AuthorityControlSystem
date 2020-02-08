@@ -1,14 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="UTF-8">
+<%--
+  Created by IntelliJ IDEA.
+  User: Chris
+  Date: 2020/2/8
+  Time: 14:23
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keys" content="">
-    <meta name="author" content="">
     <title>RBAC权限控制平台</title>
     <%
         //front_war
@@ -16,44 +15,35 @@
         //http://localhost:8080/front_war/
         String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
     %>
-    <%--  http://localhost:8080/front_war/  --%>
-    <base href="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/"/>
-    <link rel="stylesheet" href="<%=path%>/statics/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=path%>/statics/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<%=path%>/statics/css/login.css">
-    <style>
-    </style>
+    <!-- Custom Theme files -->
+    <link href="<%=path%>/statics/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- Custom Theme files -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <div>
-                <a class="navbar-brand" href="index.html" style="font-size: 32px;">RBAC权限控制平台</a>
-            </div>
+<div class="login">
+    <h2>AuthorityControlSystem</h2>
+    <div class="login-top">
+        <h1>LOGIN FORM</h1>
+        <p style=" font-size: 12px; color: red; text-align: center">${requestScope.MESSAGE }</p>
+        <form  id="login"   action="user/do/login">
+            <input type="text" name="loginAcct" value="User Id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
+            <input type="text"  name="userPswd" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
+        </form>
+        <div class="forgot">
+            <a href="#">forgot Password</a>
+            <input type="button" value="Login" onclick="document.getElementById('login').submit();">
         </div>
     </div>
-</nav>
-
-<div class="container">
-    <form action="user/do/login" class="form-signin" role="form" method="post">
-        <h2 class="form-signin-heading">
-            <i class="glyphicon glyphicon-log-in"></i>
-            <管理员登录></管理员登录>
-        </h2>
-        <p>${requestScope.MESSAGE }</p>
-        <div class="form-group has-success has-feedback">
-            <input type="text" name="loginAcct" class="form-control" id="inputLoginAcct" placeholder="请输入登录账号"
-                   autofocus>
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-        </div>
-        <div class="form-group has-success has-feedback">
-            <input type="text" name="userPswd" class="form-control" id="inputUserPassword" placeholder="请输入登录密码"
-                   style="margin-top: 10px;">
-            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-        </div>
-        <button class="btn btn-lg btn-success btn-block">登录</button>
-    </form>
+    <div class="login-bottom">
+        <h3>New User &nbsp;<a href="#">Register</a>&nbsp Here</h3>
+    </div>
+</div>
+<div class="copyright">
+    <p>Copyright &copy; 2020.Company name All rights reserved.<a target="_blank" href="#">
+    </a> - More <a href="#" target="_blank" title="#"></a></p>
 </div>
 </body>
-</html>

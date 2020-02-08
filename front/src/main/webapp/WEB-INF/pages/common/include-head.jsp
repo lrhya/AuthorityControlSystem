@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="<%=path%>/statics/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="<%=path%>/statics/css/font-awesome.min.css">
 <link rel="stylesheet" href="<%=path%>/statics/css/main.css">
+<link rel="stylesheet" href="<%=path%>/statics/layer/theme/default/layer.css">
 <style>
     .tree li {
         list-style-type: none;
