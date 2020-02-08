@@ -28,7 +28,7 @@
     <h2>AuthorityControlSystem</h2>
     <div class="login-top">
         <h1>LOGIN FORM</h1>
-        <p style=" font-size: 12px; color: red; text-align: center">${requestScope.MESSAGE }</p>
+        <p style=" font-size: 12px; color: red; text-align: center">${sessionScope.MESSAGE }</p>
         <form  id="login"   action="user/do/login">
             <input type="text" name="loginAcct" value="User Id" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User Id';}">
             <input type="text"  name="userPswd" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}">
