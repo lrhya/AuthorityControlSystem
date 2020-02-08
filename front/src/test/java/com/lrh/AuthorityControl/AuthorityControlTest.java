@@ -2,6 +2,7 @@ package com.lrh.AuthorityControl;
 
 import com.lrh.AuthorityControl.common.AuthorityControlUtils;
 import com.lrh.AuthorityControl.entity.User;
+import com.lrh.AuthorityControl.mapper.UserMapper;
 import com.lrh.AuthorityControl.service.api.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +28,9 @@ public class AuthorityControlTest {
     @Autowired
     private DataSource dataSource;
 
+    @Autowired
+    private UserMapper userMapper;
+
 
     @Autowired
     private UserService userService;
@@ -46,5 +50,13 @@ public class AuthorityControlTest {
             System.out.println(user);
         }
     }
+
+    @Test
+    public void batchSaveUser() {
+        for(int i = 0; i < 500; i++) {
+            userMapper.insert(new User(null, "loginAcct"+i, "1111111", "userName"+i, "useremail"+i+"@qq.com", "研发一中心","核心组",""));
+        }
+    }
+
 
 }

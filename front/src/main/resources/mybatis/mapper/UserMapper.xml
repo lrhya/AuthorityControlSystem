@@ -72,6 +72,23 @@
   <sql id="Base_Column_List">
     t_id, login_acct, user_pswd, user_name, user_email, depart_father, depart_son, createtime
   </sql>
+
+  <!--新增sql-->
+  <select id="selectAdminListByKeyword" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    WHERE
+    login_acct LIKE CONCAT("%", #{keyword}, "%")
+    OR user_name LIKE CONCAT("%", #{keyword}, "%")
+    OR user_email LIKE CONCAT("%", #{keyword}, "%")
+    OR depart_father LIKE CONCAT("%", #{keyword}, "%")
+    OR depart_son LIKE CONCAT("%", #{keyword}, "%")
+    <!-- order by id desc -->
+  </select>
+  <!--新增sql-->
+
+
   <select id="selectByExample" parameterType="com.lrh.AuthorityControl.entity.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

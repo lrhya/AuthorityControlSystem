@@ -19,6 +19,6 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <mvc:view-controller path="/index.html" view-name="login/user-login"></mvc:view-controller>
-    <mvc:view-controller path="/user/to/main/page" view-name="main/user-main"></mvc:view-controller>
+    <mvc:view-controller path="/index.html" view-name="login/login"></mvc:view-controller>
+    <mvc:view-controller path="/main/to/page" view-name="common/main"></mvc:view-controller>
 </beans>

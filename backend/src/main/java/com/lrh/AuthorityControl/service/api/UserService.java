@@ -1,6 +1,7 @@
 package com.lrh.AuthorityControl.service.api;
 
 
+import com.github.pagehelper.PageInfo;
 import com.lrh.AuthorityControl.entity.User;
 
 import java.util.List;
@@ -18,6 +19,6 @@ public interface UserService {
     //登录验证
     User login(String loginAcct, String userPswd);
 
-
+    PageInfo<User> queryForKeywordSearch(Integer pageNum, Integer pageSize, String keyword);
 
 }

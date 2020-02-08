@@ -17,6 +17,21 @@ public class User {
 
     private String createtime;
 
+
+    public User() {
+    }
+
+    public User(Integer tId, String loginAcct, String userPswd, String userName, String userEmail, String departFather, String departSon, String createtime) {
+        this.tId = tId;
+        this.loginAcct = loginAcct;
+        this.userPswd = userPswd;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.departFather = departFather;
+        this.departSon = departSon;
+        this.createtime = createtime;
+    }
+
     @Override
     public String toString() {
         return "User{" +

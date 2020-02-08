@@ -1,5 +1,7 @@
 package com.lrh.AuthorityControl.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lrh.AuthorityControl.common.AuthorityControlUtils;
 import com.lrh.AuthorityControl.entity.User;
 import com.lrh.AuthorityControl.entity.UserExample;
@@ -39,7 +41,7 @@ public class UserServiceImpl implements UserService {
         // 执行查询
         List<User> list = userMapper.selectByExample(userExample);
 
-        if(!AuthorityControlUtils.collectionEffective(list)) {
+        if (!AuthorityControlUtils.collectionEffective(list)) {
 
             // 如果查询结果集合无效，则直接返回null
             return null;
@@ -49,7 +51,7 @@ public class UserServiceImpl implements UserService {
         User user = list.get(0);
 
         // 确认user不为null
-        if(user == null) {
+        if (user == null) {
             return null;
         }
 
@@ -58,11 +60,24 @@ public class UserServiceImpl implements UserService {
 
         String userPswdBroswer = AuthorityControlUtils.md5(userPswd);
 
-        if(Objects.equals(userPswdBroswer, userPswdDataBase)) {
+        if (Objects.equals(userPswdBroswer, userPswdDataBase)) {
 
             // 如果两个密码相等那么说明登录能够成功，返回User对象
             return user;
         }
-        return  null;
+        return null;
+    }
+
+    @Override
+    public PageInfo<User> queryForKeywordSearch(Integer pageNum, Integer pageSize, String keyword) {
+        // 1.调用PageHelper的工具方法，开启分页功能
+        PageHelper.startPage(pageNum, pageSize);
+
+        // 2.执行分页查询
+        List<User> list = userMapper.selectAdminListByKeyword(keyword);
+
+        // 3.将list封装到PageInfo对象中
+        return new PageInfo<>(list);
+
     }
 }

@@ -1,5 +1,6 @@
 package com.lrh.AuthorityControl.handler;
 
+import com.github.pagehelper.PageInfo;
 import com.lrh.AuthorityControl.common.AuthorityControlConstant;
 import com.lrh.AuthorityControl.entity.User;
 import com.lrh.AuthorityControl.service.api.UserService;
@@ -24,6 +25,22 @@ public class UserHandler {
     private UserService userService;
 
 
+    @RequestMapping("/user/to/page")
+    public String queryForSearch(
+            // 如果页面上没有提供对应的请求参数，那么可以使用defaultValue指定默认值
+            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+            @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
+            @RequestParam(value = "keyword", defaultValue = "") String keyword,
+            Model model) {
+
+        PageInfo<User> pageInfo = userService.queryForKeywordSearch(pageNum, pageSize, keyword);
+
+        model.addAttribute(AuthorityControlConstant.ATTR_NAME_PAGE_INFO, pageInfo);
+
+        return "user/user-page";
+    }
+
+
     @RequestMapping("user/do/login")
     public String doLogin(@RequestParam("loginAcct") String loginAcct,
                           @RequestParam("userPswd") String userPswd,
@@ -37,8 +54,9 @@ public class UserHandler {
             return "redirect:/index.html";
         }
         session.setAttribute(AuthorityControlConstant.ATTR_NAME_LOGIN_ADMIN, user);
-        return "redirect:/user/to/main/page";
+        return "redirect:/main/to/page";
     }
+
 
     @RequestMapping("/user/get/all")
     public String getAll(Model model) {

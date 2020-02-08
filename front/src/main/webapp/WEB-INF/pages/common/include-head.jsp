@@ -9,15 +9,15 @@
 <title>RBAC权限控制平台</title>
 <%
     //front_war
-    String path = request.getContextPath();
+    String path_head = request.getContextPath();
     //http://localhost:8080/front_war/
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path_head + "/";
 %>
 <base href="http://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/"/>
-<link rel="stylesheet" href="<%=path%>/statics/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="<%=path%>/statics/css/font-awesome.min.css">
-<link rel="stylesheet" href="<%=path%>/statics/css/main.css">
-<link rel="stylesheet" href="<%=path%>/statics/layer/theme/default/layer.css">
+<link rel="stylesheet" href="<%=path_head%>/statics/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=path_head%>/statics/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=path_head%>/statics/css/main.css">
+<link rel="stylesheet" href="<%=path_head%>/statics/layer/theme/default/layer.css">
 <style>
     .tree li {
         list-style-type: none;
@@ -32,9 +32,9 @@
         height: auto;
     }
 </style>
-<script src="<%=path%>/statics/jquery/jquery-2.1.1.min.js"></script>
-<script src="<%=path%>/statics/bootstrap/js/bootstrap.min.js"></script>
-<script src="<%=path%>/statics/script/docs.min.js"></script>
+<script src="<%=path_head%>/statics/jquery/jquery-2.1.1.min.js"></script>
+<script src="<%=path_head%>/statics/bootstrap/js/bootstrap.min.js"></script>
+<script src="<%=path_head%>/statics/script/docs.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $(".list-group-item").click(function () {
@@ -49,4 +49,4 @@
         });
     });
 </script>
-<script type="text/javascript" src="<%=path%>/statics/layer/layer.js"></script>
+<script type="text/javascript" src="<%=path_head%>/statics/layer/layer.js"></script>
