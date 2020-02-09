@@ -74,7 +74,7 @@
   </sql>
 
   <!--新增sql-->
-  <select id="selectAdminListByKeyword" resultMap="BaseResultMap">
+  <select id="selectUserListByKeyword" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from t_user

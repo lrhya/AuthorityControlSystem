@@ -19,6 +19,9 @@ public interface UserService {
     //登录验证
     User login(String loginAcct, String userPswd);
 
+    //分页显示
     PageInfo<User> queryForKeywordSearch(Integer pageNum, Integer pageSize, String keyword);
 
+    //批量删除
+    void batchRemove(List<Integer> adminIdList);
 }

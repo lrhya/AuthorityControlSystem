@@ -18,51 +18,110 @@
     <%@ include file="/WEB-INF/pages/common/include-head.jsp" %>
     <link rel="stylesheet" href="<%=path%>/statics/css/pagination.css"/>
     <script type="text/javascript" src="<%=path%>/statics/script/jquery.pagination.js"></script>
-
+    <script type="text/javascript" src="<%=path%>/statics/script/my-user.js"></script>
     <script type="text/javascript">
         $(function () {
 
-            // 对分页导航条显示进行初始化
-            initPagination();
+            // 初始化全局变量
+            window.totalRecord = ${requestScope['PAGE-INFO'].total};
+            window.pageSize = ${requestScope['PAGE-INFO'].pageSize};
+            window.pageNum = ${requestScope['PAGE-INFO'].pageNum};
 
             // 每一次页面最初显示的时候都会把keyword设置为最新值
             window.keyword = "${param.keyword}";
 
+            // 对分页导航条显示进行初始化
+            initPagination();
+
+            // 全选/全不选功能
+            $("#summaryBox").click(function () {
+                // 获取当前#summaryBox的勾选状态
+                // this代表当前多选框对象（DOM对象） var checkStatus = this.checked;
+                // checked属性为true时表示被勾选，为false时表示没有被勾选  jquery
+                // 使用checkStatus设置.itemBox的状态
+                $(".itemBox").prop("checked", this.checked);
+            });
+
+            // 给批量删除按钮绑定单击响应函数
+            $("#batchRemoveBtn").click(function () {
+
+                // 创建数组对象：存储userId
+                var userIdArray = new Array();
+
+                // 创建数组对象：存储loginAcct
+                var loginAcctArray = new Array();
+
+                // 通过jQuery选择器定位到所有被选中itemBox，然后遍历
+                $(".itemBox:checked").each(function () {
+
+                    <%-- <input userId="${user.tId }" class="itemBox" type="checkbox"> --%>
+                    // this.userId拿不到值，原因是：this作为DOM对象无法读取HTML标签本身没有的属性
+                    // 将this转换为jQuery对象调用attr()函数就能够拿到值
+                    var userId = $(this).attr("userId");
+
+                    // 调用数组对象的push()方法将数据存入数组
+                    userIdArray.push(userId);
+
+                    // <td><input type="checkbox" /></td><td>loginAcct</td>
+                    var loginAcct = $(this)				// 当前checkbox对象
+                        .parent("td")	// 包含checkbox的td
+                        .next()			// 当前td的下一个兄弟元素，也就是下一个td
+                        .text();		// 下一个td的标签内部的文本
+
+                    loginAcctArray.push(loginAcct);
+                });
+
+                // 检查userIdArray是否包含有效数据
+                if (userIdArray.length == 0) {
+
+                    // 给出提示
+                    alert("请勾选您要删除的记录！");
+
+                    // 函数停止执行
+                    return;
+                }
+
+                // 给出确认提示，让用户确认是否真的删除这两条记录
+                var confirmResult = confirm("您真的要删除" + loginAcctArray + "信息吗？操作不可逆，请谨慎决定！");
+
+                // 如果用户点击了取消，那么让函数停止执行
+                if (!confirmResult) {
+                    return;
+                }
+
+                // 调用专门封装的函数，执行批量删除
+                doBatchRemove(userIdArray);
+
+            });
+
+
+            // 给单条删除按钮绑定单击响应函数
+            $(".uniqueRemoveBtn").click(function () {
+
+                // 获取当前userId值
+                var userId = $(this).attr("userId");
+
+                // 获取当前记录的loginAcct
+                var loginAcct = $(this).parents("tr").children("td:eq(2)").text();
+
+                var confirmResult = confirm("您真的要删除" + loginAcct + "这条记录吗？");
+
+                if (!confirmResult) {
+                    return;
+                }
+
+                // 为了能够使用批量删除的操作，将userId存入数组
+                var userIdArray = new Array();
+
+                userIdArray.push(userId);
+
+                // 调用专门封装的函数，执行批量删除
+                doBatchRemove(userIdArray);
+
+            });
+
+
         });
-
-        // 声明函数封装导航条初始化操作
-        function initPagination() {
-
-            // 声明变量存储总记录数
-            var totalRecord = ${requestScope['PAGE-INFO'].total};
-
-            // 声明变量存储分页导航条显示时的属性设置
-            var paginationProperties = {
-                num_edge_entries: 3,			//边缘页数
-                num_display_entries: 5,		//主体页数
-                callback: pageselectCallback,	//回调函数
-                items_per_page: ${requestScope['PAGE-INFO'].pageSize},	//每页显示数据数量，就是pageSize
-                current_page: ${requestScope['PAGE-INFO'].pageNum - 1},//当前页页码
-                prev_text: "before",			//上一页文本
-                next_text: "next"			//下一页文本
-            };
-
-            // 显示分页导航条
-            $("#Pagination").pagination(totalRecord, paginationProperties);
-        }
-
-        // 在每一次点击“上一页”、“下一页”、“页码”时执行这个函数跳转页面
-        function pageselectCallback(pageIndex, jq) {
-
-            // pageIndex从0开始，pageNum从1开始
-            var pageNum = pageIndex + 1;
-
-            // 跳转页面
-            window.location.href = "user/to/page?pageNum=" + pageNum;
-
-            return false;
-        }
-
 
     </script>
 </head>
@@ -131,7 +190,7 @@
                                 <c:forEach items="${requestScope['PAGE-INFO'].list }" var="user" varStatus="myStatus">
                                     <tr>
                                         <td>${myStatus.count }</td>
-                                        <td><input type="checkbox"></td>
+                                        <td><input userId="${user.tId }" class="itemBox" type="checkbox"></td>
                                         <td>${user.loginAcct }</td>
                                         <td>${user.userName }</td>
                                         <td>${user.userEmail }</td>
@@ -144,7 +203,8 @@
                                             <button type="button" class="btn btn-primary btn-xs">
                                                 <i class=" glyphicon glyphicon-pencil"></i>
                                             </button>
-                                            <button type="button" class="btn btn-danger btn-xs">
+                                            <button userId="${user.tId }" type="button"
+                                                    class="btn btn-danger btn-xs uniqueRemoveBtn">
                                                 <i class=" glyphicon glyphicon-remove"></i>
                                             </button>
                                         </td>

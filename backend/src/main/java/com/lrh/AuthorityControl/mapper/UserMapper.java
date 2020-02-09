@@ -29,5 +29,5 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    List<User> selectAdminListByKeyword(String keyword);
+    List<User> selectUserListByKeyword(String keyword);
 }

@@ -74,10 +74,29 @@ public class UserServiceImpl implements UserService {
         PageHelper.startPage(pageNum, pageSize);
 
         // 2.执行分页查询
-        List<User> list = userMapper.selectAdminListByKeyword(keyword);
+        List<User> list = userMapper.selectUserListByKeyword(keyword);
 
         // 3.将list封装到PageInfo对象中
         return new PageInfo<>(list);
 
+    }
+
+    @Override
+    public void batchRemove(List<Integer> adminIdList) {
+        // QBC：Query By Criteria
+
+        // 创建UserExample对象（不要管Example单词是什么意思，它没有意思）
+        UserExample userExample = new UserExample();
+
+        // 创建Criteria对象（不要管Criteria单词是什么意思，它没有意思）
+        // Criteria对象可以帮助我们封装查询条件
+        // 通过使用Criteria对象，可以把Java代码转换成SQL语句中WHERE子句里面的具体查询条件
+        UserExample.Criteria criteria = userExample.createCriteria();
+
+        // 针对要查询的字段封装具体的查询条件
+        criteria.andTIdIn(adminIdList);
+
+        // 执行具体操作时把封装了查询条件的Example对象传入
+        userMapper.deleteByExample(userExample);
     }
 }

@@ -2,13 +2,16 @@ package com.lrh.AuthorityControl.handler;
 
 import com.github.pagehelper.PageInfo;
 import com.lrh.AuthorityControl.common.AuthorityControlConstant;
+import com.lrh.AuthorityControl.entity.ResultEntity;
 import com.lrh.AuthorityControl.entity.User;
 import com.lrh.AuthorityControl.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,6 +26,21 @@ public class UserHandler {
 
     @Autowired
     private UserService userService;
+
+
+
+    // handler方法
+// 将当前handler方法的返回值作为响应体返回，不经过视图解析器
+    @ResponseBody
+    @RequestMapping("/admin/batch/remove")
+    public ResultEntity<String> batchRemove(@RequestBody List<Integer> adminIdList) {
+        try {
+            userService.batchRemove(adminIdList);
+            return ResultEntity.successWithoutData();
+        }catch(Exception e) {
+            return ResultEntity.failed(null, e.getMessage());
+        }
+    }
 
 
     @RequestMapping("/user/to/page")
