@@ -45,7 +45,7 @@ function doBatchRemove(userIdArray) {
 
     // 发送Ajax请求将adminIdArray发送给handler方法
     $.ajax({
-        "url": "admin/batch/remove.json",	// 服务器端接收请求的URL地址
+        "url": "user/batch/remove.json",	// 服务器端接收请求的URL地址
         "type": "post",	// 设置请求方式为POST
         "contentType": "application/json;charset=UTF-8",	// 设置请求体内容类型，告诉服务器当前请求体发送的是JSON数据
         "data": requestBody,	// 请求体真正要发送给服务器的数据

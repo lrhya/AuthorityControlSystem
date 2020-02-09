@@ -21,4 +21,5 @@
 
     <mvc:view-controller path="/index.html" view-name="login/login"></mvc:view-controller>
     <mvc:view-controller path="/main/to/page" view-name="common/main"></mvc:view-controller>
+    <mvc:view-controller path="/user/to/add/page" view-name="user/user-add"></mvc:view-controller>
 </beans>

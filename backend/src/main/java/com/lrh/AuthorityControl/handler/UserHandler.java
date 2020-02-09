@@ -6,6 +6,7 @@ import com.lrh.AuthorityControl.entity.ResultEntity;
 import com.lrh.AuthorityControl.entity.User;
 import com.lrh.AuthorityControl.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,14 +29,30 @@ public class UserHandler {
     private UserService userService;
 
 
+    @RequestMapping("/user/to/save")
+    public String saveUser(User User) {
+        try {
+            userService.saveUser(User);
+        } catch (Exception e) {
+            e.printStackTrace();
+            if(e instanceof DuplicateKeyException) {
+                throw new RuntimeException(AuthorityControlConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+            }
+        }
+        //return "redirect:/User/query/for/search.html";
+        // 操作完成后立即看到新增的记录,跳转到分页页面时前往最后一页
+        return "redirect:/user/to/page?pageNum="+Integer.MAX_VALUE;
+    }
+
+
 
     // handler方法
 // 将当前handler方法的返回值作为响应体返回，不经过视图解析器
     @ResponseBody
-    @RequestMapping("/admin/batch/remove")
-    public ResultEntity<String> batchRemove(@RequestBody List<Integer> adminIdList) {
+    @RequestMapping("/user/batch/remove")
+    public ResultEntity<String> batchRemove(@RequestBody List<Integer> UserIdList) {
         try {
-            userService.batchRemove(adminIdList);
+            userService.batchRemove(UserIdList);
             return ResultEntity.successWithoutData();
         }catch(Exception e) {
             return ResultEntity.failed(null, e.getMessage());

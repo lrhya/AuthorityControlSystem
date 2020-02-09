@@ -24,4 +24,6 @@ public interface UserService {
 
     //批量删除
     void batchRemove(List<Integer> adminIdList);
+
+    void saveUser(User user);
 }

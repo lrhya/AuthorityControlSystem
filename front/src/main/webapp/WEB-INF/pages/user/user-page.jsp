@@ -162,7 +162,7 @@
                             style="float: right; margin-left: 10px;">
                         <i class=" glyphicon glyphicon-remove"></i> 删除
                     </button>
-                    <a href="user/to/add/page.html" class="btn btn-primary" style="float: right;"><i
+                    <a href="user/to/add/page" class="btn btn-primary" style="float: right;"><i
                             class="glyphicon glyphicon-plus"></i> 新增</a>
                     <br>
                     <hr style="clear: both;">

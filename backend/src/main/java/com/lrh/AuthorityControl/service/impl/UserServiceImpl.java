@@ -8,6 +8,7 @@ import com.lrh.AuthorityControl.entity.UserExample;
 import com.lrh.AuthorityControl.mapper.UserMapper;
 import com.lrh.AuthorityControl.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
 
     @Override
     public List<User> getAll() {
@@ -82,7 +84,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void batchRemove(List<Integer> adminIdList) {
+    public void batchRemove(List<Integer> userIdList) {
         // QBC：Query By Criteria
 
         // 创建UserExample对象（不要管Example单词是什么意思，它没有意思）
@@ -94,9 +96,20 @@ public class UserServiceImpl implements UserService {
         UserExample.Criteria criteria = userExample.createCriteria();
 
         // 针对要查询的字段封装具体的查询条件
-        criteria.andTIdIn(adminIdList);
+        criteria.andTIdIn(userIdList);
 
         // 执行具体操作时把封装了查询条件的Example对象传入
         userMapper.deleteByExample(userExample);
+    }
+
+    @Override
+    public void saveUser(User user) {
+        // 对密码进行加密
+        String userPswd = user.getUserPswd();
+       userPswd = AuthorityControlUtils.md5(userPswd);
+        user.setUserPswd(userPswd);
+
+        // 执行保存
+        userMapper.insert(user);
     }
 }
