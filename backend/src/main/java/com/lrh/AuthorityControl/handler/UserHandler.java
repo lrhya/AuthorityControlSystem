@@ -28,6 +28,32 @@ public class UserHandler {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/user/to/update")
+    public String updateUser(User user) {
+
+        try {
+            userService.updateUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+            if(e instanceof DuplicateKeyException) {
+                throw new RuntimeException(AuthorityControlConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+            }
+        }
+        return "redirect:/user/to/page";
+    }
+
+
+
+    @RequestMapping("/user/to/edit")
+    public String toEditPage(@RequestParam("userId") Integer userId, Model model) {
+
+        User user = userService.getUserById(userId);
+
+        model.addAttribute("user", user);
+
+        return "user/user-edit";
+    }
+
 
     @RequestMapping("/user/to/save")
     public String saveUser(User User) {
@@ -39,7 +65,7 @@ public class UserHandler {
                 throw new RuntimeException(AuthorityControlConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
             }
         }
-        //return "redirect:/User/query/for/search.html";
+        //return "redirect:/user/to/page";
         // 操作完成后立即看到新增的记录,跳转到分页页面时前往最后一页
         return "redirect:/user/to/page?pageNum="+Integer.MAX_VALUE;
     }

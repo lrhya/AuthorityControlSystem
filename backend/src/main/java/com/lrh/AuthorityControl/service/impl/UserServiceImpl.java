@@ -112,4 +112,20 @@ public class UserServiceImpl implements UserService {
         // 执行保存
         userMapper.insert(user);
     }
+
+    @Override
+    public User getUserById(Integer userId) {
+        return userMapper.selectByPrimaryKey(userId);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        // 对密码进行加密
+        String userPswd = user.getUserPswd();
+        userPswd = AuthorityControlUtils.md5(userPswd);
+        user.setUserPswd(userPswd);
+
+        // 执行更新
+        userMapper.updateByPrimaryKey(user);
+    }
 }

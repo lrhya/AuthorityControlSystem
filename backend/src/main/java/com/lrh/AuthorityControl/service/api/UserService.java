@@ -26,4 +26,8 @@ public interface UserService {
     void batchRemove(List<Integer> adminIdList);
 
     void saveUser(User user);
+
+    User getUserById(Integer userId);
+
+    void updateUser(User user);
 }

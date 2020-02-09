@@ -200,9 +200,9 @@
                                             <button type="button" class="btn btn-success btn-xs">
                                                 <i class=" glyphicon glyphicon-check"></i>
                                             </button>
-                                            <button type="button" class="btn btn-primary btn-xs">
-                                                <i class=" glyphicon glyphicon-pencil"></i>
-                                            </button>
+                                            <a href="user/to/edit?userId=${user.tId }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
+                                               class="btn btn-primary btn-xs">
+                                                <i class=" glyphicon glyphicon-pencil"></i></a>
                                             <button userId="${user.tId }" type="button"
                                                     class="btn btn-danger btn-xs uniqueRemoveBtn">
                                                 <i class=" glyphicon glyphicon-remove"></i>
