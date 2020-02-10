@@ -22,6 +22,8 @@
     <script type="text/javascript">
         $(function () {
 
+            layer.msg("hello layer");
+
             // 初始化全局变量
             window.totalRecord = ${requestScope['PAGE-INFO'].total};
             window.pageSize = ${requestScope['PAGE-INFO'].pageSize};

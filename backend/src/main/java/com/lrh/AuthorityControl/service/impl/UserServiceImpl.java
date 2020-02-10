@@ -8,7 +8,6 @@ import com.lrh.AuthorityControl.entity.UserExample;
 import com.lrh.AuthorityControl.mapper.UserMapper;
 import com.lrh.AuthorityControl.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

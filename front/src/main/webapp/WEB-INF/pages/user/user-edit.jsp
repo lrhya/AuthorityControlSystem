@@ -19,8 +19,8 @@
         <%@ include file="/WEB-INF/pages/common/include-sidebar.jsp" %>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <ol class="breadcrumb">
-                <li><a href="admin/to/main/page.html">首页</a></li>
-                <li><a href="admin/query/for/search.html">数据列表</a></li>
+                <li><a href="main/to/page">首页</a></li>
+                <li><a href="user/to/page">数据列表</a></li>
                 <li class="active">更新</li>
             </ol>
             <div class="panel panel-default">
