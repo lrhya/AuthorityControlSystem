@@ -66,6 +66,19 @@
   <sql id="Base_Column_List">
     t_id, role_name
   </sql>
+
+  <!--新增sql-->
+  <select id="selectForKeywordSearch" resultMap="BaseResultMap">
+	SELECT
+		t_id,
+		role_name
+	FROM
+		t_role
+	WHERE
+		role_name LIKE CONCAT('%', #{keyword}, '%')
+</select>
+  <!--新增sql-->
+
   <select id="selectByExample" parameterType="com.lrh.AuthorityControl.entity.RoleExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
