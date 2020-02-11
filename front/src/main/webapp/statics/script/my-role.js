@@ -29,7 +29,7 @@ function getPageInfo() {
 
     // 以同步请求方式调用$.ajax()函数并获取返回值（返回值包含全部响应数据）
     var ajaxResult = $.ajax({
-        "url":"role/to/page",
+        "url":"role/search/by/keyword.json",
         "type":"post",
         "data":{
             "pageNum":(window.pageNum == undefined)?1:window.pageNum,
@@ -79,6 +79,18 @@ function generateTableBody(pageInfo) {
         return ;
     }
 
+    /*
+<tr>
+    <td>1</td>
+    <td><input type='checkbox'></td>
+    <td>PM - 项目经理</td>
+    <td>
+        <button type='button' class='btn btn-success btn-xs'><i class=' glyphicon glyphicon-check'></i></button>
+        <button type='button' class='btn btn-primary btn-xs'><i class=' glyphicon glyphicon-pencil'></i></button>
+        <button type='button' class='btn btn-danger btn-xs'><i class=' glyphicon glyphicon-remove'></i></button>
+    </td>
+</tr>
+     */
 
     for(var i = 0; i < list.length; i++) {
 
@@ -90,7 +102,7 @@ function generateTableBody(pageInfo) {
 
         var numberTd = "<td>"+(i+1)+"</td>";
         var checkBoxTd = "<td><input roleid='"+role.tId+"' class='itemBox' type='checkbox'></td>";
-        var roleNameTd = "<td>"+role.roleName+"</td>";
+        var roleNameTd = "<td>"+role.tName+"</td>";
         var btnTd = "<td>"+checkBtn+" "+pencilBtn+" "+removeBtn+"</td>";
 
         var tr = "<tr>"+numberTd+checkBoxTd+roleNameTd+btnTd+"</tr>";
@@ -129,4 +141,72 @@ function pageselectCallback(pageIndex,jq) {
     showPage();
 
     return false;
+}
+
+// 根据roleIdArray查询roleList
+function getRoleListByRoleIdArray(roleIdArray) {
+
+    // 1.将roleIdArray转换成JSON字符串
+    var requestBody = JSON.stringify(roleIdArray);
+
+    // 2.发送Ajax请求
+    var ajaxResult = $.ajax({
+        "url":"role/get/list/by/id/list.json",
+        "type":"post",
+        "data":requestBody,
+        "contentType":"application/json;charset=UTF-8",
+        "dataType":"json",
+        "async":false
+    });
+
+    // 3.获取JSON对象类型的响应体
+    var resultEntity = ajaxResult.responseJSON;
+
+    // 4.验证是否成功
+    var result = resultEntity.result;
+
+    if(result == "SUCCESS") {
+
+        // 5.如果成功，则返回roleList
+        return resultEntity.data;
+    }
+
+    if(result == "FAILED") {
+        layer.msg(resultEntity.message);
+        return null;
+    }
+
+    return null;
+
+}
+
+// 打开删除确认模态框
+function showRemoveConfirmModal() {
+
+    // 1.将模态框显示出来
+    $("#confirmModal").modal("show");
+
+    // 2.根据roleIdList获取roleList
+    var roleList = getRoleListByRoleIdArray(window.roleIdArray);
+
+    // 3.清空#confirmModalTableBody
+
+    $("#confirmModalTableBody").empty();
+
+    // 4.填充#confirmModalTableBody
+    for(var i = 0; i < roleList.length; i++) {
+
+        // 5.获取角色相关数据
+        var role = roleList[i];
+
+        var id = role.tId;
+
+        var name = role.tName;
+
+        var trHTML = "<tr><td>"+id+"</td><td>"+name+"</td></tr>";
+
+        // 6.执行填充
+        $("#confirmModalTableBody").append(trHTML);
+    }
+
 }

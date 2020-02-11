@@ -3,7 +3,7 @@
 <mapper namespace="com.lrh.AuthorityControl.mapper.RoleMapper">
   <resultMap id="BaseResultMap" type="com.lrh.AuthorityControl.entity.Role">
     <id column="t_id" jdbcType="INTEGER" property="tId" />
-    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="t_name" jdbcType="VARCHAR" property="tName" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,20 +64,50 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    t_id, role_name
+    t_id, t_name
   </sql>
 
-  <!--新增sql-->
   <select id="selectForKeywordSearch" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_role
+    WHERE t_name LIKE CONCAT('%', #{keyword}, '%')
+  </select>
+  <select id="selectAssignedRoleList" resultMap="BaseResultMap">
+	SELECT
+		r.t_id,
+		r.t_name
+	FROM
+		t_role r
+	LEFT JOIN inner_admin_role ar ON r.t_id = ar.role_id
+	WHERE
+		ar.admin_id = #{adminId}
+</select>
+  <select id="selectUnAssignedRoleList" resultMap="BaseResultMap">
 	SELECT
 		t_id,
-		role_name
+		t_name
 	FROM
 		t_role
 	WHERE
-		role_name LIKE CONCAT('%', #{keyword}, '%')
+		t_id NOT IN (
+			SELECT
+				role_id
+			FROM
+				inner_admin_role
+			WHERE
+				admin_id = #{adminId}
+		)
 </select>
-  <!--新增sql-->
+  <delete id="deleteOldAdminRelationship">
+		delete from inner_admin_role where admin_id=#{adminId}
+	</delete>
+  <insert id="insertNewAdminRelationship">
+    insert into inner_admin_role(admin_id,role_id)
+    values
+    <foreach collection="roleIdList" item="roleId" separator=",">(#{adminId},#{roleId})</foreach>
+  </insert>
+
 
   <select id="selectByExample" parameterType="com.lrh.AuthorityControl.entity.RoleExample" resultMap="BaseResultMap">
     select
@@ -110,8 +140,8 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lrh.AuthorityControl.entity.Role">
-    insert into t_role (t_id, role_name)
-    values (#{tId,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR})
+    insert into t_role (t_id, t_name)
+    values (#{tId,jdbcType=INTEGER}, #{tName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lrh.AuthorityControl.entity.Role">
     insert into t_role
@@ -119,16 +149,16 @@
       <if test="tId != null">
         t_id,
       </if>
-      <if test="roleName != null">
-        role_name,
+      <if test="tName != null">
+        t_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="tId != null">
         #{tId,jdbcType=INTEGER},
       </if>
-      <if test="roleName != null">
-        #{roleName,jdbcType=VARCHAR},
+      <if test="tName != null">
+        #{tName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -144,8 +174,8 @@
       <if test="record.tId != null">
         t_id = #{record.tId,jdbcType=INTEGER},
       </if>
-      <if test="record.roleName != null">
-        role_name = #{record.roleName,jdbcType=VARCHAR},
+      <if test="record.tName != null">
+        t_name = #{record.tName,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -155,7 +185,7 @@
   <update id="updateByExample" parameterType="map">
     update t_role
     set t_id = #{record.tId,jdbcType=INTEGER},
-      role_name = #{record.roleName,jdbcType=VARCHAR}
+      t_name = #{record.tName,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -163,15 +193,15 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.lrh.AuthorityControl.entity.Role">
     update t_role
     <set>
-      <if test="roleName != null">
-        role_name = #{roleName,jdbcType=VARCHAR},
+      <if test="tName != null">
+        t_name = #{tName,jdbcType=VARCHAR},
       </if>
     </set>
     where t_id = #{tId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lrh.AuthorityControl.entity.Role">
     update t_role
-    set role_name = #{roleName,jdbcType=VARCHAR}
+    set t_name = #{tName,jdbcType=VARCHAR}
     where t_id = #{tId,jdbcType=INTEGER}
   </update>
 </mapper>

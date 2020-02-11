@@ -1,5 +1,6 @@
 package com.lrh.AuthorityControl.mapper;
 
+
 import com.lrh.AuthorityControl.entity.Role;
 import com.lrh.AuthorityControl.entity.RoleExample;
 import org.apache.ibatis.annotations.Param;
@@ -29,5 +30,14 @@ public interface RoleMapper {
 
     int updateByPrimaryKey(Role record);
 
+
     List<Role> selectForKeywordSearch(String keyword);
+
+    List<Role> selectAssignedRoleList(Integer adminId);
+
+    List<Role> selectUnAssignedRoleList(Integer adminId);
+
+    void deleteOldAdminRelationship(Integer adminId);
+
+    void insertNewAdminRelationship(@Param("adminId") Integer adminId, @Param("roleIdList") List<Integer> roleIdList);
 }
