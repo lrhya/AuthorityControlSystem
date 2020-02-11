@@ -29,7 +29,7 @@ function getPageInfo() {
 
     // 以同步请求方式调用$.ajax()函数并获取返回值（返回值包含全部响应数据）
     var ajaxResult = $.ajax({
-        "url":"role/to/page.json",
+        "url":"role/to/page",
         "type":"post",
         "data":{
             "pageNum":(window.pageNum == undefined)?1:window.pageNum,

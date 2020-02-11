@@ -1,0 +1,48 @@
+package com.lrh.AuthorityControl.service.impl;
+
+
+import com.lrh.AuthorityControl.entity.Menu;
+import com.lrh.AuthorityControl.entity.MenuExample;
+import com.lrh.AuthorityControl.mapper.MenuMapper;
+import com.lrh.AuthorityControl.service.api.MenuService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @author lrhya
+ * @version 1.0
+ * @date 2020/1/31 13:25
+ */
+@Service
+public class MenuServiceImpl implements MenuService {
+
+    @Autowired
+    private MenuMapper menuMapper;
+
+    @Override
+    public List<Menu> getAll() {
+        return menuMapper.selectByExample(new MenuExample());
+    }
+
+    @Override
+    public void saveMenu(Menu menu) {
+        menuMapper.insert(menu);
+    }
+
+    @Override
+    public Menu getMenuById(Integer menuId) {
+        return menuMapper.selectByPrimaryKey(menuId);
+    }
+
+    @Override
+    public void updateMenu(Menu menu) {
+        menuMapper.updateByPrimaryKey(menu);
+    }
+
+    @Override
+    public void removeMenu(Integer menuId) {
+        menuMapper.deleteByPrimaryKey(menuId);
+    }
+}
