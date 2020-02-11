@@ -478,5 +478,6 @@
 <%@ include file="/WEB-INF/pages/role/include-modal-role-confirm.jsp" %>
 <%@ include file="/WEB-INF/pages/role/include-modal-role-add.jsp" %>
 <%@ include file="/WEB-INF/pages/role/include-modal-role-edit.jsp" %>
+<%@ include file="/WEB-INF/pages/role/include-modal-assign-auth.jsp" %>
 </body>
 </html>

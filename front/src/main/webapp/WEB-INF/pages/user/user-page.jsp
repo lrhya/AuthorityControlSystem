@@ -199,8 +199,8 @@
                                         <td>${user.departFather }</td>
                                         <td>${user.departSon }</td>
                                         <td>
-                                            <button type="button" class="btn btn-success btn-xs">
-                                                <i class=" glyphicon glyphicon-check"></i>
+                                            <a href="assign/to/assign/role/page?userId=${user.tId }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
+                                               class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></a>
                                             </button>
                                             <a href="user/to/edit?userId=${user.tId }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
                                                class="btn btn-primary btn-xs">
