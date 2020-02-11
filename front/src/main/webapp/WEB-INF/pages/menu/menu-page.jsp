@@ -18,7 +18,7 @@
     <%@ include file="/WEB-INF/pages/common/include-head.jsp" %>
     <link rel="stylesheet" href="<%=path%>/statics/ztree/zTreeStyle.css"/>
     <script type="text/javascript" src="<%=path%>/statics/ztree/jquery.ztree.all-3.5.min.js"></script>
-    <script type="text/javascript" src="<%=path%>/statics/script/my-menu.js"></script>
+    <script type="text/javascript" src="<%=path%>/statics/script/my-menu.js" charset="utf-8"></script>
     <script type="text/javascript">
         $(function(){
         //页面加载完成前加载
