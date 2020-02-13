@@ -14,7 +14,7 @@
         //front_war
         String path = request.getContextPath();
     %>
-    <%@ include file="/WEB-INF/pages/common/include-head.jsp" %>
+    <%@ include file="/WEB-INF/pages/AuthorityControl/common/include-head.jsp" %>
     <link rel="stylesheet" href="<%=path%>/statics/css/pagination.css"/>
     <link rel="stylesheet" href="<%=path%>/statics/ztree/zTreeStyle.css"/>
     <script type="text/javascript" src="<%=path%>/statics/ztree/jquery.ztree.all-3.5.min.js"></script>
@@ -414,10 +414,10 @@
 </head>
 <body>
 
-<%@ include file="/WEB-INF/pages/common/include-nav.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/common/include-nav.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <%@ include file="/WEB-INF/pages/common/include-sidebar.jsp" %>
+        <%@ include file="/WEB-INF/pages/AuthorityControl/common/include-sidebar.jsp" %>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -475,9 +475,9 @@
         </div>
     </div>
 </div>
-<%@ include file="/WEB-INF/pages/role/include-modal-role-confirm.jsp" %>
-<%@ include file="/WEB-INF/pages/role/include-modal-role-add.jsp" %>
-<%@ include file="/WEB-INF/pages/role/include-modal-role-edit.jsp" %>
-<%@ include file="/WEB-INF/pages/role/include-modal-assign-auth.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/role/include-modal-role-confirm.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/role/include-modal-role-add.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/role/include-modal-role-edit.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/role/include-modal-assign-auth.jsp" %>
 </body>
 </html>

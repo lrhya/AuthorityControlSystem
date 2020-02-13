@@ -51,7 +51,7 @@ public class UserHandler {
 
         model.addAttribute("user", user);
 
-        return "user/user-edit";
+        return "AuthorityControl/user/user-edit";
     }
 
 
@@ -98,7 +98,7 @@ public class UserHandler {
 
         model.addAttribute(AuthorityControlConstant.ATTR_NAME_PAGE_INFO, pageInfo);
 
-        return "user/user-page";
+        return "AuthorityControl/user/user-page";
     }
 
 
@@ -123,6 +123,6 @@ public class UserHandler {
     public String getAll(Model model) {
         List<User> list = userService.getAll();
         model.addAttribute("list", list);
-        return "test/test-target";    //  "/WEB-INF/pages/test/test-target"
+        return "AuthorityControl/test/test-target";    //  "/WEB-INF/pages/test/test-target"
     }
 }

@@ -95,6 +95,6 @@ public class AssignHandler {
         model.addAttribute("assignedRoleList", assignedRoleList);
         model.addAttribute("unAssignedRoleList", unAssignedRoleList);
 
-        return "user/assign-role";
+        return "AuthorityControl/user/assign-role";
     }
 }

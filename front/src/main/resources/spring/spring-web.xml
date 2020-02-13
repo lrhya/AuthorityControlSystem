@@ -19,10 +19,10 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <mvc:view-controller path="/index.html" view-name="login/login"></mvc:view-controller>
-    <mvc:view-controller path="/main/to/page" view-name="common/main"></mvc:view-controller>
-    <mvc:view-controller path="/user/to/add/page" view-name="user/user-add"></mvc:view-controller>
-    <mvc:view-controller path="/role/to/page" view-name="role/role-page"></mvc:view-controller>
-    <mvc:view-controller path="/menu/to/page" view-name="menu/menu-page"></mvc:view-controller>
-    <mvc:view-controller path="/depart/to/page" view-name="depart/depart-page"></mvc:view-controller>
+    <mvc:view-controller path="/index.html" view-name="AuthorityControl/login/login"></mvc:view-controller>
+    <mvc:view-controller path="/main/to/page" view-name="AuthorityControl/common/main"></mvc:view-controller>
+    <mvc:view-controller path="/user/to/add/page" view-name="AuthorityControl/user/user-add"></mvc:view-controller>
+    <mvc:view-controller path="/role/to/page" view-name="AuthorityControl/role/role-page"></mvc:view-controller>
+    <mvc:view-controller path="/menu/to/page" view-name="AuthorityControl/menu/menu-page"></mvc:view-controller>
+    <mvc:view-controller path="/depart/to/page" view-name="AuthorityControl/depart/depart-page"></mvc:view-controller>
 </beans>

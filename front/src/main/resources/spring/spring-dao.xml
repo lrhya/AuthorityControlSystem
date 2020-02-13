@@ -27,7 +27,6 @@
 
         <!-- 配置Mapper配置文件位置 -->
         <property name="mapperLocations" value="classpath:mybatis/mapper/*Mapper.xml"/>
-
         <!-- 装配数据源 -->
         <property name="dataSource" ref="dataSource"/>
 

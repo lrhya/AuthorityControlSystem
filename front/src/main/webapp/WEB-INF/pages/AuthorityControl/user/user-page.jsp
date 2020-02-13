@@ -15,7 +15,7 @@
         //front_war
         String path = request.getContextPath();
     %>
-    <%@ include file="/WEB-INF/pages/common/include-head.jsp" %>
+    <%@ include file="/WEB-INF/pages/AuthorityControl/common/include-head.jsp" %>
     <link rel="stylesheet" href="<%=path%>/statics/css/pagination.css"/>
     <script type="text/javascript" src="<%=path%>/statics/script/jquery.pagination.js"></script>
     <script type="text/javascript" src="<%=path%>/statics/script/my-user.js"></script>
@@ -129,10 +129,10 @@
 </head>
 <body>
 
-<%@ include file="/WEB-INF/pages/common/include-nav.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/common/include-nav.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <%@ include file="/WEB-INF/pages/common/include-sidebar.jsp" %>
+        <%@ include file="/WEB-INF/pages/AuthorityControl/common/include-sidebar.jsp" %>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="panel panel-default">
                 <div class="panel-heading">

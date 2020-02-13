@@ -15,7 +15,7 @@
        //front_war
         String path = request.getContextPath();
          %>
-    <%@ include file="/WEB-INF/pages/common/include-head.jsp" %>
+    <%@ include file="/WEB-INF/pages/AuthorityControl/common/include-head.jsp" %>
     <link rel="stylesheet" href="<%=path%>/statics/ztree/zTreeStyle.css"/>
     <script type="text/javascript" src="<%=path%>/statics/ztree/jquery.ztree.all-3.5.min.js"></script>
     <script type="text/javascript" src="<%=path%>/statics/script/my-depart.js" charset="utf-8"></script>
@@ -151,10 +151,10 @@
     </script>
 </head>
 <body>
-<%@ include file="/WEB-INF/pages/common/include-nav.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/common/include-nav.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <%@ include file="/WEB-INF/pages/common/include-sidebar.jsp" %>
+        <%@ include file="/WEB-INF/pages/AuthorityControl/common/include-sidebar.jsp" %>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -172,8 +172,8 @@
     </div>
 </div>
 
-<%@ include file="/WEB-INF/pages/depart/include-modal-depart-add.jsp" %>
-<%@ include file="/WEB-INF/pages/depart/include-modal-depart-edit.jsp" %>
-<%@ include file="/WEB-INF/pages/depart/include-modal-depart-confirm.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/depart/include-modal-depart-add.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/depart/include-modal-depart-edit.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/depart/include-modal-depart-confirm.jsp" %>
 </body>
 </html>

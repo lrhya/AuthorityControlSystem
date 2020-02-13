@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="UTF-8">
 <head>
-    <%@ include file="/WEB-INF/pages/common/include-head.jsp" %>
+    <%@ include file="/WEB-INF/pages/AuthorityControl/common/include-head.jsp" %>
 </head>
 <body>
 
-<%@ include file="/WEB-INF/pages/common/include-nav.jsp" %>
+<%@ include file="/WEB-INF/pages/AuthorityControl/common/include-nav.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <%@ include file="/WEB-INF/pages/common/include-sidebar.jsp" %>
+        <%@ include file="/WEB-INF/pages/AuthorityControl/common/include-sidebar.jsp" %>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">控制面板</h1>
 
