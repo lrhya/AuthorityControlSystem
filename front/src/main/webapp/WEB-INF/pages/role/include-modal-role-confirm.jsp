@@ -8,7 +8,7 @@
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h4 class="modal-title">尚筹网系统弹窗</h4>
+				<h4 class="modal-title">系统弹窗</h4>
 			</div>
 			<div class="modal-body">
 				<p>您确定要删除下面的显示的内容吗？</p>
