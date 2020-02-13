@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div id="menuAddModal" class="modal fade in" tabindex="-1" role="dialog">
+<div id="departAddModal" class="modal fade in" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -12,7 +12,6 @@
 			<form>
 				<div class="modal-body">
 						请输入节点名称：<input type="text" name="name"><br>
-						请输入URL地址：<input type="text" name="url"><br>
 						<input type="radio" name="icon" value="glyphicon glyphicon-th-list">           <i class="glyphicon glyphicon-th-list"></i>
 						<input type="radio" name="icon" value="glyphicon glyphicon-dashboard">         <i class="glyphicon glyphicon-dashboard"></i>
 						<input type="radio" name="icon" value="glyphicon glyphicon glyphicon-tasks">   <i class="glyphicon glyphicon glyphicon-tasks"></i>
@@ -33,10 +32,10 @@
 						<br/>
 				</div>
 				<div class="modal-footer">
-					<button id="menuAddBtn" type="button" class="btn btn-success">
+					<button id="departAddBtn" type="button" class="btn btn-success">
                         <i class="glyphicon glyphicon-plus"></i> 保存
                     </button>
-					<button id="menuAddResetBtn" type="reset" class="btn btn-primary">
+					<button id="departAddResetBtn" type="reset" class="btn btn-primary">
                         <i class="glyphicon glyphicon-refresh"></i> 重置
                     </button>
 				</div>

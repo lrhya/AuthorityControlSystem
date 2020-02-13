@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div id="menuEditModal" class="modal fade" tabindex="-1" role="dialog">
+<div id="departEditModal" class="modal fade" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -12,8 +12,7 @@
 			</div>
 			<form>
 				<div class="modal-body">
-					请输入节点名称：<input type="text" name="name" /><br /> 请输入URL地址：<input
-						type="text" name="url" /><br /> <input type="radio" name="icon"
+					请输入节点名称：<input type="text" name="name" /><br /> <input type="radio" name="icon"
 						value="glyphicon glyphicon-th-list" /> <i
 						class="glyphicon glyphicon-th-list"></i> <input type="radio"
 						name="icon" value="glyphicon glyphicon-dashboard" /> <i
@@ -50,7 +49,7 @@
 						class="glyphicon glyphicon-list-alt"></i> <br />
 				</div>
 				<div class="modal-footer">
-					<button id="menuEditBtn" type="button" class="btn btn-success">
+					<button id="departEditBtn" type="button" class="btn btn-success">
 						<i class="glyphicon glyphicon-refresh"></i> 更新
 					</button>
 				</div>

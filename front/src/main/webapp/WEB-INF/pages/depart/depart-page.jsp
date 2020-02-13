@@ -24,138 +24,129 @@
         //页面加载完成前加载
         initWholeTree();
 
-        $("#menuAddBtn").click(function () {
-            // 收集表单填写的数据
-            var name = $.trim($("#menuAddModal [name='name']").val());
-            var url = $.trim($("#menuAddModal [name='url']").val());
-            var icon = $("#menuAddModal [name='icon']:checked").val();
+            $("#departAddBtn").click(function () {
+                // 收集表单填写的数据
+                var name = $.trim($("#departAddModal [name='name']").val());
+                var icon = $("#departAddModal [name='icon']:checked").val();
 
-            if (name == null || name == "") {
-                layer.msg("请填写菜单项名称！");
-                return;
-            }
+                if (name == null || name == "") {
+                    layer.msg("请填写菜单项名称！");
+                    return;
+                }
 
-            if (url == null || url == "") {
-                layer.msg("请填写菜单项对应的访问地址！");
-                return;
-            }
 
-            // 发送Ajax请求
-            $.ajax({
-                "url": "menu/save.json",
-                "type": "post",
-                "dataType": "json",
-                "data": {
-                    "name": name,
-                    "url": url,
-                    "pid": window.menuId,	// 当前操作的节点是新节点的父节点
-                    "icon": icon
-                },
-                "success": function (response) {
 
-                    var result = response.result;
+                // 发送Ajax请求
+                $.ajax({
+                    "url": "depart/save.json",
+                    "type": "post",
+                    "dataType": "json",
+                    "data": {
+                        "name": name,
+                        "pid": window.departId,	// 当前操作的节点是新节点的父节点
+                        "icon": icon
+                    },
+                    "success": function (response) {
 
-                    if (result == "SUCCESS") {
-                        layer.msg("操作成功！");
+                        var result = response.result;
 
-                        initWholeTree();
-                    }
+                        if (result == "SUCCESS") {
+                            layer.msg("操作成功！");
 
-                    if (result == "FAILED") {
+                            initWholeTree();
+                        }
+
+                        if (result == "FAILED") {
+                            layer.msg(response.message);
+                        }
+
+                    },
+                    "error": function (response) {
                         layer.msg(response.message);
                     }
+                });
 
-                },
-                "error": function (response) {
-                    layer.msg(response.message);
-                }
+                $("#departAddModal").modal("hide");
             });
 
-            $("#menuAddModal").modal("hide");
-        });
+            $("#departEditBtn").click(function(){
 
-        $("#menuEditBtn").click(function(){
+                // 收集表单填写的数据
+                var name = $.trim($("#departEditModal [name='name']").val());
+                var icon = $("#departEditModal [name='icon']:checked").val();
 
-            // 收集表单填写的数据
-            var name = $.trim($("#menuEditModal [name='name']").val());
-            var url = $.trim($("#menuEditModal [name='url']").val());
-            var icon = $("#menuEditModal [name='icon']:checked").val();
+                if(name == null || name == "") {
+                    layer.msg("请填写菜单项名称！");
+                    return ;
+                }
 
-            if(name == null || name == "") {
-                layer.msg("请填写菜单项名称！");
-                return ;
-            }
 
-            if(url == null || url == "") {
-                layer.msg("请填写菜单项对应的访问地址！");
-                return ;
-            }
 
-            // 发送Ajax请求
-            $.ajax({
-                "url":"menu/update.json",
-                "type":"post",
-                "dataType":"json",
-                "data":{
-                    "id":window.menuId,
-                    "pid":window.menuPid,
-                    "name":name,
-                    "url":url,
-                    "icon":icon
-                },
-                "success":function(response){
+                // 发送Ajax请求
+                $.ajax({
+                    "url":"depart/update.json",
+                    "type":"post",
+                    "dataType":"json",
+                    "data":{
+                        "id":window.departId,
+                        "pid":window.departPid,
+                        "name":name,
+                        "icon":icon
+                    },
+                    "success":function(response){
 
-                    var result = response.result;
+                        var result = response.result;
 
-                    if(result == "SUCCESS") {
-                        layer.msg("操作成功！");
+                        if(result == "SUCCESS") {
+                            layer.msg("操作成功！");
 
-                        initWholeTree();
-                    }
+                            initWholeTree();
+                        }
 
-                    if(result == "FAILED") {
+                        if(result == "FAILED") {
+                            layer.msg(response.message);
+                        }
+
+                    },
+                    "error":function(response){
                         layer.msg(response.message);
                     }
+                });
 
-                },
-                "error":function(response){
-                    layer.msg(response.message);
-                }
+                $("#departEditModal").modal("hide");
             });
 
-            $("#menuEditModal").modal("hide");
-        });
+            $("#departRemoveBtn").click(function(){
 
-        $("#menuRemoveBtn").click(function(){
+                $.ajax({
+                    "url":"depart/remove/"+window.departId+".json",
+                    "type":"post",
+                    "data":{"random":Math.random()},
+                    "dataType":"json",
+                    "success":function(response){
 
-            $.ajax({
-                "url":"menu/remove/"+window.menuId+".json",
-                "type":"post",
-                "data":{"random":Math.random()},
-                "dataType":"json",
-                "success":function(response){
+                        if(response.result == "SUCCESS") {
 
-                    if(response.result == "SUCCESS") {
+                            layer.msg("操作成功！");
 
-                        layer.msg("操作成功！");
+                            initWholeTree();
+                        }
 
-                        initWholeTree();
-                    }
+                        if(response.result == "FAILED") {
+                            layer.msg(response.message);
+                        }
 
-                    if(response.result == "FAILED") {
+                    },
+                    "error":function(response){
                         layer.msg(response.message);
                     }
+                });
 
-                },
-                "error":function(response){
-                    layer.msg(response.message);
-                }
+                // 后续操作
+                $("#departConfirmModal").modal("hide");
+
             });
-
-            // 后续操作
-            $("#menuConfirmModal").modal("hide");
-
-        });
+        
         });
     </script>
 </head>

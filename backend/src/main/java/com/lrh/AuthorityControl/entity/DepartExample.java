@@ -224,73 +224,73 @@ public class DepartExample {
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameIsNull() {
-            addCriterion("depart_name is null");
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameIsNotNull() {
-            addCriterion("depart_name is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameEqualTo(String value) {
-            addCriterion("depart_name =", value, "departName");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameNotEqualTo(String value) {
-            addCriterion("depart_name <>", value, "departName");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameGreaterThan(String value) {
-            addCriterion("depart_name >", value, "departName");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameGreaterThanOrEqualTo(String value) {
-            addCriterion("depart_name >=", value, "departName");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameLessThan(String value) {
-            addCriterion("depart_name <", value, "departName");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameLessThanOrEqualTo(String value) {
-            addCriterion("depart_name <=", value, "departName");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameLike(String value) {
-            addCriterion("depart_name like", value, "departName");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameNotLike(String value) {
-            addCriterion("depart_name not like", value, "departName");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameIn(List<String> values) {
-            addCriterion("depart_name in", values, "departName");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameNotIn(List<String> values) {
-            addCriterion("depart_name not in", values, "departName");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameBetween(String value1, String value2) {
-            addCriterion("depart_name between", value1, value2, "departName");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andDepartNameNotBetween(String value1, String value2) {
-            addCriterion("depart_name not between", value1, value2, "departName");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 
