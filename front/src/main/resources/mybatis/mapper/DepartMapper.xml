@@ -188,8 +188,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lrh.AuthorityControl.entity.Depart">
     update t_depart
-    set pid = #{pid,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
+    set name = #{name,jdbcType=VARCHAR},
       icon = #{icon,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
