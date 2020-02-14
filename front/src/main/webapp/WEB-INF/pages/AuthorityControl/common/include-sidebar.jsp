@@ -23,7 +23,7 @@
                 <ul style="margin-top: 10px; display: none;">
                     <li style="height: 30px;"><a href="customer/query/for/search"><i
                             class="glyphicon glyphicon-picture"></i> 用户信息维护</a></li>
-                    <li style="height: 30px;"><a href="type.html"><i
+                    <li style="height: 30px;"><a href="customerRole/to/page"><i
                             class="glyphicon glyphicon-equalizer"></i> 用户角色维护</a></li>
                     <li style="height: 30px;"><a href="menu/to/page"><i
                             class="glyphicon glyphicon-random"></i> 用户权限维护</a></li>
