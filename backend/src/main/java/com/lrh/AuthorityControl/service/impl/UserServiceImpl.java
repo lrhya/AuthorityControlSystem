@@ -2,11 +2,11 @@ package com.lrh.AuthorityControl.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lrh.AuthorityControl.common.AuthorityControlUtils;
 import com.lrh.AuthorityControl.entity.User;
 import com.lrh.AuthorityControl.entity.UserExample;
 import com.lrh.AuthorityControl.mapper.UserMapper;
 import com.lrh.AuthorityControl.service.api.UserService;
+import com.lrh.Common.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
         // 执行查询
         List<User> list = userMapper.selectByExample(userExample);
 
-        if (!AuthorityControlUtils.collectionEffective(list)) {
+        if (!Utils.collectionEffective(list)) {
 
             // 如果查询结果集合无效，则直接返回null
             return null;
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
         // 比较密码
         String userPswdDataBase = user.getUserPswd();
 
-        String userPswdBroswer = AuthorityControlUtils.md5(userPswd);
+        String userPswdBroswer = Utils.md5(userPswd);
 
         if (Objects.equals(userPswdBroswer, userPswdDataBase)) {
 
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         // 对密码进行加密
         String userPswd = user.getUserPswd();
-       userPswd = AuthorityControlUtils.md5(userPswd);
+       userPswd = Utils.md5(userPswd);
         user.setUserPswd(userPswd);
 
         // 执行保存
@@ -121,7 +121,7 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
         // 对密码进行加密
         String userPswd = user.getUserPswd();
-        userPswd = AuthorityControlUtils.md5(userPswd);
+        userPswd = Utils.md5(userPswd);
         user.setUserPswd(userPswd);
 
         // 执行更新

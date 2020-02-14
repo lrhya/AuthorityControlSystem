@@ -1,11 +1,11 @@
 package com.lrh.AuthorityControl.service.impl;
 
 
-import com.lrh.AuthorityControl.common.AuthorityControlUtils;
 import com.lrh.AuthorityControl.entity.Auth;
 import com.lrh.AuthorityControl.entity.AuthExample;
 import com.lrh.AuthorityControl.mapper.AuthMapper;
 import com.lrh.AuthorityControl.service.api.AuthService;
+import com.lrh.Common.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,7 +46,7 @@ public class AuthServiceImpl implements AuthService {
         authMapper.deleteOldRelationship(roleId);
 
         // 4.保存新数据
-        if(AuthorityControlUtils.collectionEffective(authIdList)) {
+        if(Utils.collectionEffective(authIdList)) {
             authMapper.insertNewRelationship(roleId, authIdList);
         }
     }

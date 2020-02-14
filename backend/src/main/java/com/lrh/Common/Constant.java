@@ -1,11 +1,11 @@
-package com.lrh.AuthorityControl.common;
+package com.lrh.Common;
 
 /**
  * @author lrhya
  * @version 1.0
  * @date 2020/2/7 21:16
  */
-public class AuthorityControlConstant {
+public class Constant {
 
     public static final String ATTR_NAME_MESSAGE = "MESSAGE";
     public static final String ATTR_NAME_LOGIN_ADMIN = "LOGIN-ADMIN";

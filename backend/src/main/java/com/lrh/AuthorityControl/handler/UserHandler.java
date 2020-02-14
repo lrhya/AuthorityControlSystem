@@ -1,10 +1,10 @@
 package com.lrh.AuthorityControl.handler;
 
 import com.github.pagehelper.PageInfo;
-import com.lrh.AuthorityControl.common.AuthorityControlConstant;
 import com.lrh.AuthorityControl.entity.ResultEntity;
 import com.lrh.AuthorityControl.entity.User;
 import com.lrh.AuthorityControl.service.api.UserService;
+import com.lrh.Common.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
@@ -36,7 +36,7 @@ public class UserHandler {
         } catch (Exception e) {
             e.printStackTrace();
             if(e instanceof DuplicateKeyException) {
-                throw new RuntimeException(AuthorityControlConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+                throw new RuntimeException(Constant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
             }
         }
         return "redirect:/user/to/page";
@@ -62,7 +62,7 @@ public class UserHandler {
         } catch (Exception e) {
             e.printStackTrace();
             if(e instanceof DuplicateKeyException) {
-                throw new RuntimeException(AuthorityControlConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+                throw new RuntimeException(Constant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
             }
         }
         //return "redirect:/user/to/page";
@@ -96,7 +96,7 @@ public class UserHandler {
 
         PageInfo<User> pageInfo = userService.queryForKeywordSearch(pageNum, pageSize, keyword);
 
-        model.addAttribute(AuthorityControlConstant.ATTR_NAME_PAGE_INFO, pageInfo);
+        model.addAttribute(Constant.ATTR_NAME_PAGE_INFO, pageInfo);
 
         return "AuthorityControl/user/user-page";
     }
@@ -111,10 +111,10 @@ public class UserHandler {
 
         //判断user是否为null
         if (user == null) {
-            session.setAttribute(AuthorityControlConstant.ATTR_NAME_MESSAGE, AuthorityControlConstant.MESSAGE_LOGIN_FAILED);
+            session.setAttribute(Constant.ATTR_NAME_MESSAGE, Constant.MESSAGE_LOGIN_FAILED);
             return "redirect:/index.html";
         }
-        session.setAttribute(AuthorityControlConstant.ATTR_NAME_LOGIN_ADMIN, user);
+        session.setAttribute(Constant.ATTR_NAME_LOGIN_ADMIN, user);
         return "redirect:/main/to/page";
     }
 

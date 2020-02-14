@@ -23,7 +23,7 @@
                     class="glyphicon glyphicon-th-large"></i> 用户权限管理 <span
                     class="badge" style="float: right">3</span></span>
                 <ul style="margin-top: 10px; display: none;">
-                    <li style="height: 30px;"><a href="cert.html"><i
+                    <li style="height: 30px;"><a href="customer/query/for/search"><i
                             class="glyphicon glyphicon-picture"></i> 用户信息维护</a></li>
                     <li style="height: 30px;"><a href="type.html"><i
                             class="glyphicon glyphicon-equalizer"></i> 用户角色维护</a></li>

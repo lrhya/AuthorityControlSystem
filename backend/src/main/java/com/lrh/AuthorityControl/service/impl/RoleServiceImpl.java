@@ -1,11 +1,11 @@
 package com.lrh.AuthorityControl.service.impl;
 
 
-import com.lrh.AuthorityControl.common.AuthorityControlUtils;
 import com.lrh.AuthorityControl.entity.Role;
 import com.lrh.AuthorityControl.entity.RoleExample;
 import com.lrh.AuthorityControl.mapper.RoleMapper;
 import com.lrh.AuthorityControl.service.api.RoleService;
+import com.lrh.Common.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -109,7 +109,7 @@ public class RoleServiceImpl implements RoleService {
         roleMapper.deleteOldAdminRelationship(adminId);
 
         // 2.保存全部新数据
-        if(AuthorityControlUtils.collectionEffective(roleIdList)) {
+        if(Utils.collectionEffective(roleIdList)) {
             roleMapper.insertNewAdminRelationship(adminId, roleIdList);
         }
 

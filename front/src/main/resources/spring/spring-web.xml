@@ -25,4 +25,6 @@
     <mvc:view-controller path="/role/to/page" view-name="AuthorityControl/role/role-page"></mvc:view-controller>
     <mvc:view-controller path="/menu/to/page" view-name="AuthorityControl/menu/menu-page"></mvc:view-controller>
     <mvc:view-controller path="/depart/to/page" view-name="AuthorityControl/depart/depart-page"></mvc:view-controller>
+
+    <mvc:view-controller path="/customer/to/add/page" view-name="KnowledgeControl/customer/customer-add"></mvc:view-controller>
 </beans>

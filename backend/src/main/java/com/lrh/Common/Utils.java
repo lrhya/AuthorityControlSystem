@@ -1,4 +1,4 @@
-package com.lrh.AuthorityControl.common;
+package com.lrh.Common;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -10,7 +10,7 @@ import java.util.Map;
  * @version 1.0
  * @date 2020/2/7 21:17
  */
-public class AuthorityControlUtils {
+public class Utils {
 
     /**
      * 判断Map是否有效
@@ -54,7 +54,7 @@ public class AuthorityControlUtils {
         //判断传入的明文字符串是否有效
         if (! stringEffective(source)){
             //如果检测到明文字符串异常，抛出异通知方法的调用者
-            throw new RuntimeException(AuthorityControlConstant.MESSAGE_CODE_INVALID);
+            throw new RuntimeException(Constant.MESSAGE_CODE_INVALID);
         }
 
         //声明StringBuilder
