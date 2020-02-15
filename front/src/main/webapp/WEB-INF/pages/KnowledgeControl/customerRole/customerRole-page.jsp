@@ -44,6 +44,85 @@
                 $(".itemBox").prop("checked", this.checked);
             });
 
+
+
+            // 给批量删除按钮绑定单击响应函数
+            $("#RolebatchRemoveBtn").click(function () {
+
+                // 创建数组对象：存储customerId
+                var customerRoleIdArray = new Array();
+
+                // 创建数组对象：存储loginAcct
+                var tNameArray = new Array();
+
+                // 通过jQuery选择器定位到所有被选中itemBox，然后遍历
+                $(".itemBox:checked").each(function () {
+
+                    <%-- <input customerId="${customer.id }" class="itemBox" type="checkbox"> --%>
+                    // this.customerId拿不到值，原因是：this作为DOM对象无法读取HTML标签本身没有的属性
+                    // 将this转换为jQuery对象调用attr()函数就能够拿到值
+                    var customerRoleId = $(this).attr("customerRoleId");
+
+                    // 调用数组对象的push()方法将数据存入数组
+                    customerRoleIdArray.push(customerRoleId);
+
+                    // <td><input type="checkbox" /></td><td>loginAcct</td>
+                    var tName = $(this)				// 当前checkbox对象
+                        .parent("td")	// 包含checkbox的td
+                        .next()			// 当前td的下一个兄弟元素，也就是下一个td
+                        .text();		// 下一个td的标签内部的文本
+
+                    tNameArray.push(tName);
+                });
+
+                // 检查customerIdArray是否包含有效数据
+                if (customerRoleIdArray.length == 0) {
+
+                    // 给出提示
+                    alert("请勾选您要删除的记录！");
+
+                    // 函数停止执行
+                    return;
+                }
+
+                // 给出确认提示，让用户确认是否真的删除这两条记录
+                var confirmResult = confirm("您真的要删除" + tNameArray + "信息吗？操作不可逆，请谨慎决定！");
+
+                // 如果用户点击了取消，那么让函数停止执行
+                if (!confirmResult) {
+                    return;
+                }
+
+                // 调用专门封装的函数，执行批量删除
+                doBatchRemove(customerRoleIdArray);
+
+            });
+
+
+            // 给单条删除按钮绑定单击响应函数
+            $(".RoleuniqueRemoveBtn").click(function () {
+
+                // 获取当前customerId值
+                var customerRoleId = $(this).attr("customerRoleId");
+
+                // 获取当前记录的loginAcct
+                var tName = $(this).parents("tr").children("td:eq(2)").text();
+
+                var confirmResult = confirm("您真的要删除" + tName + "这条记录吗？");
+
+                if (!confirmResult) {
+                    return;
+                }
+
+                // 为了能够使用批量删除的操作，将customerId存入数组
+                var customerRoleIdArray = new Array();
+
+                customerRoleIdArray.push(customerRoleId);
+
+                // 调用专门封装的函数，执行批量删除
+                doBatchRemove(customerRoleIdArray);
+
+            });
         })
 
 
@@ -81,13 +160,13 @@
                         </button>
                     </form>
                     <button
-                            id="batchRemoveBtn"
+                            id="RolebatchRemoveBtn"
                             type="button"
                             class="btn btn-danger"
                             style="float: right; margin-left: 10px;">
                         <i class=" glyphicon glyphicon-remove"></i> 删除
                     </button>
-                    <a href="customer/to/add/page" class="btn btn-primary" style="float: right;"><i
+                    <a href="customerRole/to/add/page" class="btn btn-primary" style="float: right;"><i
                             class="glyphicon glyphicon-plus"></i> 新增</a>
                     <br>
                     <hr style="clear: both;">
@@ -112,16 +191,15 @@
                                            var="customerRole" varStatus="myStatus">
                                     <tr>
                                         <td>${myStatus.count }</td>
-                                        <td><input customerId="${customerRole.tId }" class="itemBox" type="checkbox"></td>
+                                        <td><input customerRoleId="${customerRole.tId }" class="itemBox" type="checkbox"></td>
                                         <td>${customerRole.tName }</td>
                                         <td>
-                                            <a href="assign/to/assign/role/page.html?customerId=${customer.id }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
-                                               class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></a>
-                                            <a href="customer/to/edit/page.html?customerId=${customer.id }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
+                                            <a href="" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></a>
+                                            <a href="customerRole/to/edit/page?customerRoleId=${customerRole.tId }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
                                                class="btn btn-primary btn-xs"><i
                                                     class=" glyphicon glyphicon-pencil"></i></a>
-                                            <button customerId="${customer.id }" type="button"
-                                                    class="btn btn-danger btn-xs uniqueRemoveBtn">
+                                            <button customerRoleId="${customerRole.tId  }" type="button"
+                                                    class="btn btn-danger btn-xs RoleuniqueRemoveBtn">
                                                 <i class=" glyphicon glyphicon-remove"></i>
                                             </button>
                                         </td>

@@ -29,28 +29,20 @@
                 </div>
                 <div class="panel-body">
 
-                    <form:form action="customer/update" method="post" modelAttribute="customer">
+                    <form:form action="customerRole/update" method="post" modelAttribute="customerRole">
                         <!-- 模型对象中包含的属性可以使用form:hidden -->
-                        <form:hidden path="id"/>
+                        <form:hidden path="tId"/>
 
                         <!-- 模型对象中没有的属性不能使用form:hidden -->
                         <input type="hidden" name="pageNum" value="${param.pageNum }" />
 
                         <div class="form-group">
-                            <label for="exampleInputPassword1">登录账号</label>
-                            <form:input path="loginAcct" cssClass="form-control"/>
+                            <label for="exampleInputPassword1">id</label>
+                            <form:input path="tId" cssClass="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">登录密码</label>
-                            <form:input path="userPswd" cssClass="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">用户昵称</label>
-                            <form:input path="userName" cssClass="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">邮箱地址</label>
-                            <form:input path="email" cssClass="form-control"/>
+                            <label for="exampleInputPassword1">角色</label>
+                            <form:input path="tName" cssClass="form-control"/>
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="glyphicon glyphicon-edit"></i> 更新

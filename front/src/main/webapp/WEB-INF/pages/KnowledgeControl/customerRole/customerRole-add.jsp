@@ -27,42 +27,24 @@
                     表单数据
                 </div>
                 <div class="panel-body">
-                    <form action="customer/save.html" method="post" role="form">
+                    <form action="customerRole/save" method="post" role="form">
                         <div class="form-group">
-                            <label for="exampleInputLoginAcct">登录账号</label>
+                            <label for="exampleInputLoginAcct">id</label>
                             <input
                                     type="text"
-                                    name="loginAcct"
+                                    name="tId"
                                     class="form-control"
                                     id="exampleInputLoginAcct"
                                     placeholder="请输入登陆账号"/>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword">登录密码</label>
+                            <label for="exampleInputPassword">角色名</label>
                             <input
                                     type="text"
-                                    name="userPswd"
+                                    name="tName"
                                     class="form-control"
                                     id="exampleInputPassword"
                                     placeholder="请输入登录密码"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputUsername">用户昵称</label>
-                            <input
-                                    type="text"
-                                    name="userName"
-                                    class="form-control"
-                                    id="exampleInputUsername"
-                                    placeholder="请输入用户昵称"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">邮箱地址</label>
-                            <input
-                                    type="email"
-                                    name="email"
-                                    class="form-control"
-                                    id="exampleInputEmail1"
-                                    placeholder="请输入邮箱地址"/>
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="glyphicon glyphicon-plus"></i> 新增

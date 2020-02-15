@@ -33,7 +33,7 @@ function pageselectCallback(pageIndex, jq) {
 
 
 // 封装执行批量删除的函数
-function doBatchRemove(userIdArray) {
+function doBatchRemove(customerRoleIdArray) {
 
     // 将JSON数组转换为JSON字符串
     // var a = [1,2,3,4,5];					数组类型
@@ -41,11 +41,11 @@ function doBatchRemove(userIdArray) {
     // var c = {"userName":"tom"};			对象类型
     // var d = "{\"userName\":\"tom\"}";	字符串类型
     // 发送Ajax请求执行批量删除
-    var requestBody = JSON.stringify(userIdArray);
+    var requestBody = JSON.stringify(customerRoleIdArray);
 
     // 发送Ajax请求将adminIdArray发送给handler方法
     $.ajax({
-        "url": "user/batch/remove.json",	// 服务器端接收请求的URL地址
+        "url": "customerRole/batch/remove.json",	// 服务器端接收请求的URL地址
         "type": "post",	// 设置请求方式为POST
         "contentType": "application/json;charset=UTF-8",	// 设置请求体内容类型，告诉服务器当前请求体发送的是JSON数据
         "data": requestBody,	// 请求体真正要发送给服务器的数据
@@ -57,7 +57,7 @@ function doBatchRemove(userIdArray) {
 
             if (result == "SUCCESS") {
                 // 跳转页面
-                window.location.href = "user/to/page?pageNum="+window.pageNum+"&keyword="+window.keyword;
+                window.location.href = "customerRole/to/page?pageNum="+window.pageNum+"&keyword="+window.keyword;
             }
 
             if (result == "FAILED") {
