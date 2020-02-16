@@ -194,7 +194,8 @@
                                         <td><input customerRoleId="${customerRole.tId }" class="itemBox" type="checkbox"></td>
                                         <td>${customerRole.tName }</td>
                                         <td>
-                                            <a href="" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></a>
+                                            <a href="assign/to/customerAssign/menu/page?customerRoleId=${customerRole.tId  }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
+                                               class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></a>
                                             <a href="customerRole/to/edit/page?customerRoleId=${customerRole.tId }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
                                                class="btn btn-primary btn-xs"><i
                                                     class=" glyphicon glyphicon-pencil"></i></a>

@@ -207,4 +207,43 @@
       icon = #{icon,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <select id="selectAssignedMenuList" resultMap="BaseResultMap">
+	SELECT
+		m.id,
+		m.name
+	FROM
+		t_menu m
+	LEFT JOIN inner_customerrole_menu cm ON m.id = cm.menu_id
+	WHERE
+		cm.customerRole_id = #{customerRoleId}
+</select>
+  <select id="selectUnAssignedMenuList" resultMap="BaseResultMap">
+	SELECT
+		id,
+		name
+	FROM
+		t_menu
+	WHERE
+		id NOT IN (
+			SELECT
+				menu_id
+			FROM
+				inner_customerRole_menu
+			WHERE
+				customerRole_id = #{customerRoleId}
+		)
+</select>
+
+
+  <delete id="deleteOldMenuRelationship">
+		delete from inner_customerrole_menu where customerRole_id = #{customerRoleId}
+	</delete>
+  <insert id="insertNewMenuRelationship">
+    insert into inner_customerrole_menu(customerRole_id,menu_id)
+    values
+    <foreach collection="customerMenuIdList" item="menuId" separator=",">(#{customerRoleId},#{menuId})</foreach>
+  </insert>
+
 </mapper>

@@ -11,6 +11,8 @@ import java.util.List;
  * @date 2020/1/31 13:22
  */
 public interface MenuService {
+
+
     List<Menu> getAll();
 
     void saveMenu(Menu menu);
@@ -20,4 +22,11 @@ public interface MenuService {
     void updateMenu(Menu menu);
 
     void removeMenu(Integer menuId);
+
+    List<Menu> getAssignedCustomerMenuList(Integer customerRoleId) ;
+
+
+    List<Menu> getUnAssignedCustomerMenuList(Integer customerRoleId) ;
+
+    void updateRelationship(Integer customerRoleId, List<Integer> customerMenuIdList);
 }

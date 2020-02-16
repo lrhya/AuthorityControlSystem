@@ -3,8 +3,10 @@ package com.lrh.AuthorityControl.service.impl;
 
 import com.lrh.AuthorityControl.entity.Menu;
 import com.lrh.AuthorityControl.entity.MenuExample;
+import com.lrh.AuthorityControl.entity.Role;
 import com.lrh.AuthorityControl.mapper.MenuMapper;
 import com.lrh.AuthorityControl.service.api.MenuService;
+import com.lrh.Common.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +46,30 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public void removeMenu(Integer menuId) {
         menuMapper.deleteByPrimaryKey(menuId);
+    }
+
+    @Override
+    public List<Menu> getAssignedCustomerMenuList(Integer customerRoleId) {
+        List<Menu> menuList = menuMapper.selectAssignedMenuList(customerRoleId);
+
+        return menuList;
+    }
+
+    @Override
+    public List<Menu> getUnAssignedCustomerMenuList(Integer customerRoleId) {
+        List<Menu> menuList = menuMapper.selectUnAssignedMenuList(customerRoleId);
+
+        return menuList;
+    }
+
+    @Override
+    public void updateRelationship(Integer customerRoleId, List<Integer> customerMenuIdList) {
+        // 1.删除全部旧数据
+        menuMapper.deleteOldMenuRelationship(customerRoleId);
+
+        // 2.保存全部新数据
+        if(Utils.collectionEffective(customerMenuIdList)) {
+            menuMapper.insertNewMenuRelationship(customerRoleId, customerMenuIdList);
+        }
     }
 }

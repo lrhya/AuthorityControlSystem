@@ -34,18 +34,18 @@
 				</ol>
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form action="assign/role" method="post" role="form"
+						<form action="customerRoleAssign/menu" method="post" role="form"
 							class="form-inline">
 
-							<input type="hidden" name="userId" value="${param.userId }" />
+							<input type="hidden" name="customerRoleId" value="${param.customerRoleId }" />
 							<input type="hidden" name="pageNum" value="${param.pageNum }" />
 							<div class="form-group">
 								<label for="exampleInputPassword1">未分配角色列表</label><br>
 								<select
 									id="leftSelect" class="form-control" multiple size="10"
 									style="width: 100px; overflow-y: auto;">
-									<c:forEach items="${requestScope.unAssignedRoleList }" var="role">
-										<option value="${role.tId }">${role.tName }</option>
+									<c:forEach items="${requestScope.unAssignedCustomerMenuList }" var="menu">
+										<option value="${menu.id }">${menu.name }</option>
 									</c:forEach>
 								</select>
 							</div>
@@ -62,11 +62,11 @@
 							<div class="form-group" style="margin-left: 40px;">
 								<label for="exampleInputPassword1">已分配角色列表</label><br>
 								<select
-									id="rightSelect" name="roleIdList" class="form-control"
+									id="rightSelect" name="customerMenuIdList" class="form-control"
 									multiple size="10" style="width: 100px; overflow-y: auto;">
 									
-									<c:forEach items="${requestScope.assignedRoleList }" var="role">
-										<option value="${role.tId }">${role.tName }</option>
+									<c:forEach items="${requestScope.assignedCustomerMenuList}" var="menu">
+										<option value="${menu.id }">${menu.name }</option>
 									</c:forEach>
 
 								</select>

@@ -28,4 +28,14 @@ public interface MenuMapper {
     int updateByPrimaryKeySelective(Menu record);
 
     int updateByPrimaryKey(Menu record);
+
+    List<Menu> selectAssignedMenuList(Integer customerRoleId);
+
+    List<Menu> selectUnAssignedMenuList(Integer customerRoleId);
+
+
+    void deleteOldMenuRelationship(Integer customerRoleId);
+    void insertNewMenuRelationship(@Param("customerRoleId") Integer customerRoleId,@Param("customerMenuIdList")  List<Integer> customerMenuIdList);
+
+
 }
