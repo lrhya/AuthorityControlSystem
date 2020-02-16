@@ -5,8 +5,10 @@ import com.github.pagehelper.PageInfo;
 import com.lrh.AuthorityControl.entity.CustomerExample;
 import com.lrh.AuthorityControl.entity.CustomerRole;
 import com.lrh.AuthorityControl.entity.CustomerRoleExample;
+import com.lrh.AuthorityControl.entity.Role;
 import com.lrh.AuthorityControl.mapper.CustomerRoleMapper;
 import com.lrh.AuthorityControl.service.api.CustomerRoleService;
+import com.lrh.Common.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -74,5 +76,33 @@ public class CustomerRoleServiceImpl implements CustomerRoleService {
     public void updateCustomerRole(CustomerRole customerRole) {
         // 执行更新
         customerRoleMapper.updateByPrimaryKey(customerRole);
+    }
+
+    @Override
+    public List<CustomerRole> getAssignedCustomerRoleList(Integer customerId) {
+        List<CustomerRole> customerRoleList = customerRoleMapper.selectAssignedRoleList(customerId);
+
+        return customerRoleList;
+    }
+
+    @Override
+    public List<CustomerRole> getUnAssignedCustomerRoleList(Integer customerId) {
+
+        List<CustomerRole> customerRoleList = customerRoleMapper.selectUnAssignedRoleList(customerId);
+
+        return customerRoleList;
+    }
+
+    @Override
+    public void updateRelationship(Integer customerId, List<Integer> customerRoleIdList) {
+
+        // 1.删除全部旧数据
+        customerRoleMapper.deleteOldCustomerRelationship(customerId);
+
+        // 2.保存全部新数据
+        if(Utils.collectionEffective(customerRoleIdList)) {
+            customerRoleMapper.insertNewCustomerRelationship(customerId, customerRoleIdList);
+        }
+
     }
 }

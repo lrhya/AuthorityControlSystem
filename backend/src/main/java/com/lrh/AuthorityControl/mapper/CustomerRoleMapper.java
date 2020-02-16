@@ -30,4 +30,12 @@ public interface CustomerRoleMapper {
     int updateByPrimaryKey(CustomerRole record);
 
     List<CustomerRole> selectCustomerRoleListByKeyword(String keyword);
+
+    List<CustomerRole> selectAssignedRoleList(Integer customerId);
+
+    List<CustomerRole> selectUnAssignedRoleList(Integer customerId);
+
+    void deleteOldCustomerRelationship(Integer customerId);
+
+    void insertNewCustomerRelationship(@Param("customerId")Integer customerId, @Param("customerRoleIdList")List<Integer> customerRoleIdList);
 }

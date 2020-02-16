@@ -199,7 +199,7 @@
                                         <td>${customer.userName }</td>
                                         <td>${customer.email }</td>
                                         <td>
-                                            <a href="assign/to/assign/role/page.html?customerId=${customer.id }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
+                                            <a href="assign/to/customerAssign/role/page?customerId=${customer.id }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
                                                class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></a>
                                             <a href="customer/to/edit/page.html?customerId=${customer.id }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
                                                class="btn btn-primary btn-xs"><i

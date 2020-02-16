@@ -17,6 +17,44 @@
   </select>
 
 
+  <select id="selectAssignedRoleList" resultMap="BaseResultMap">
+	SELECT
+		r.t_id,
+		r.t_name
+	FROM
+		t_customer_role r
+	LEFT JOIN inner_customer_customerrole ar ON r.t_id = ar.customerRole_id
+	WHERE
+		ar.customer_id = #{customerId}
+</select>
+  <select id="selectUnAssignedRoleList" resultMap="BaseResultMap">
+	SELECT
+		t_id,
+		t_name
+	FROM
+		t_customer_role
+	WHERE
+		t_id NOT IN (
+			SELECT
+				customerRole_id
+			FROM
+				inner_customer_customerrole
+			WHERE
+				customer_id = #{customerId}
+		)
+</select>
+ <delete id="deleteOldCustomerRelationship">
+		delete from inner_customer_customerrole where customer_id=#{customerId}
+	</delete>
+  <insert id="insertNewCustomerRelationship">
+    insert into inner_customer_customerrole(customer_id,customerRole_id)
+    values
+    <foreach collection="customerRoleIdList" item="customerRoleId" separator=",">(#{customerId},#{customerRoleId})</foreach>
+  </insert>
+
+
+
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

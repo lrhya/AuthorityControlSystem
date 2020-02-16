@@ -6,11 +6,11 @@
             <li class="list-group-item tree-closed"><a href="main/to/page"><i
                     class="glyphicon glyphicon-dashboard"></i> 控制面板</a></li>
             <li class="list-group-item tree-closed"><span><i
-                    class="glyphicon glyphicon glyphicon-tasks"></i> 系统权限管理 <span
+                    class="glyphicon glyphicon glyphicon-tasks"></i> 系统信息管理 <span
                     class="badge" style="float: right">3</span></span>
                 <ul style="margin-top: 10px; display: none;">
                     <li style="height: 30px;"><a href="user/to/page"><i
-                            class="glyphicon glyphicon-user"></i> 管理员信息维护</a></li>
+                            class="glyphicon glyphicon-user"></i> 职员信息维护</a></li>
                     <li style="height: 30px;"><a href="role/to/page"><i
                             class="glyphicon glyphicon-king"></i> 系统角色维护</a></li>
                     <li style="height: 30px;"><a href="depart/to/page"><i
@@ -18,7 +18,7 @@
                 </ul>
             </li>
             <li class="list-group-item tree-closed"><span><i
-                    class="glyphicon glyphicon-th-large"></i> 用户权限管理 <span
+                    class="glyphicon glyphicon-th-large"></i> 用户信息管理 <span
                     class="badge" style="float: right">3</span></span>
                 <ul style="margin-top: 10px; display: none;">
                     <li style="height: 30px;"><a href="customer/query/for/search"><i

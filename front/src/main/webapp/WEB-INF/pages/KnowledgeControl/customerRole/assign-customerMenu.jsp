@@ -43,7 +43,7 @@
 								<label for="exampleInputPassword1">未分配角色列表</label><br>
 								<select
 									id="leftSelect" class="form-control" multiple size="10"
-									style="	width: 100px; overflow-y: auto;">
+									style="width: 100px; overflow-y: auto;">
 									<c:forEach items="${requestScope.unAssignedRoleList }" var="role">
 										<option value="${role.tId }">${role.tName }</option>
 									</c:forEach>

@@ -25,4 +25,11 @@ public interface CustomerRoleService {
     CustomerRole getCustomerRoleById(Integer customerRoleId);
 
     void updateCustomerRole(CustomerRole customerRole);
+
+    List<CustomerRole> getAssignedCustomerRoleList(Integer customerId);
+
+    List<CustomerRole> getUnAssignedCustomerRoleList(Integer customerId);
+
+
+    void updateRelationship(Integer customerId, List<Integer> customerRoleIdList);
 }
