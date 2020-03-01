@@ -10,7 +10,7 @@
 
     <!-- 配置SpringMVC标配：注解驱动 -->
     <mvc:annotation-driven/>
-
+    <!--放行静态资源文件-->
     <mvc:default-servlet-handler/>
 
     <!-- 配置视图解析器 -->
