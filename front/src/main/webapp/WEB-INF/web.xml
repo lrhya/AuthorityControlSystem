@@ -10,21 +10,17 @@
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-<!--    <context-param>
+
+   <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/spring-service.xml</param-value>
     </context-param>
 
-    &lt;!&ndash; Bootstraps the root web application context before servlet initialization &ndash;&gt;
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>-->
+    </listener>
 
-    <!--放行所有资源-->
-    <servlet-mapping>
-        <servlet-name>springDispatcherServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
 
     <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
     <servlet>
@@ -32,7 +28,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/spring-web.xml,classpath:spring/spring-service.xml</param-value>
+            <param-value>classpath:spring/spring-web.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -42,6 +38,7 @@
     <!-- Map all requests to the DispatcherServlet for handling -->
     <servlet-mapping>
         <servlet-name>springDispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
         <url-pattern>*.html</url-pattern>
         <url-pattern>*.json</url-pattern>
     </servlet-mapping>
