@@ -23,11 +23,11 @@ function initPagination() {
 function pageselectCallback(pageIndex, jq) {
 
     // pageIndex从0开始，pageNum从1开始
-    var pageNum = pageIndex + 1;
-
+    //var pageNum = pageIndex + 1;
+    window.pageNum = pageIndex+1;
     // 跳转页面
-    window.location.href = "customerRole/to/page?pageNum=" + pageNum;
-
+  //  window.location.href = "customerRole/to/page?pageNum=" + pageNum;
+    window.location.href = "customerRole/to/page?pageNum="+(pageIndex + 1)+"&keyword="+window.keyword;
     return false;
 }
 

@@ -53,12 +53,8 @@
                             <form:input path="userEmail" cssClass="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputDepartFather">邮箱地址</label>
+                            <label for="exampleInputDepartFather">所属部门</label>
                             <form:input path="departFather" cssClass="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputDepartSon">邮箱地址</label>
-                            <form:input path="departSon" cssClass="form-control"/>
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="glyphicon glyphicon-edit"></i> 更新

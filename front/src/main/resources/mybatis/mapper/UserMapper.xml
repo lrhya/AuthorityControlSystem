@@ -83,7 +83,6 @@
     OR user_name LIKE CONCAT("%", #{keyword}, "%")
     OR user_email LIKE CONCAT("%", #{keyword}, "%")
     OR depart_father LIKE CONCAT("%", #{keyword}, "%")
-    OR depart_son LIKE CONCAT("%", #{keyword}, "%")
     <!-- order by id desc -->
   </select>
   <!--新增sql-->

@@ -71,6 +71,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageInfo<User> queryForKeywordSearch(Integer pageNum, Integer pageSize, String keyword) {
+
         // 1.调用PageHelper的工具方法，开启分页功能
         PageHelper.startPage(pageNum, pageSize);
 

@@ -22,7 +22,7 @@
     <script type="text/javascript">
         $(function () {
 
-            layer.msg("hello layer");
+            // layer.msg("hello layer");
 
             // 初始化全局变量
             window.totalRecord = ${requestScope['PAGE-INFO'].total};
@@ -31,6 +31,9 @@
 
             // 每一次页面最初显示的时候都会把keyword设置为最新值
             window.keyword = "${param.keyword}";
+
+            // 对分页导航条显示进行初始化
+            initPagination();
 
             // 对分页导航条显示进行初始化
             initPagination();
@@ -141,7 +144,7 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    <form action="user/to/page" class="form-inline" role="form" style="float: left;"
+                    <form action="user/to/page.html" class="form-inline" role="form" style="float: left;"
                           method="post">
                         <div class="form-group has-feedback">
                             <div class="input-group">
@@ -177,8 +180,8 @@
                                 <th>账号</th>
                                 <th>用户名</th>
                                 <th>邮箱地址</th>
-                                <th>组织</th>
                                 <th>部门</th>
+<%--                                <th>部门</th>--%>
                                 <th width="100">操作</th>
                             </tr>
                             </thead>
@@ -197,7 +200,7 @@
                                         <td>${user.userName }</td>
                                         <td>${user.userEmail }</td>
                                         <td>${user.departFather }</td>
-                                        <td>${user.departSon }</td>
+<%--                                        <td>${user.departSon }</td>--%>
                                         <td>
                                             <a href="assign/to/assign/role/page?userId=${user.tId }&pageNum=${requestScope['PAGE-INFO'].pageNum}"
                                                class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></a>
@@ -216,7 +219,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <td colspan="8" align="center">
+                                <td colspan="7" align="center">
                                     <div id="Pagination" class="pagination">
                                         <!-- 这里显示分页 -->
                                     </div>

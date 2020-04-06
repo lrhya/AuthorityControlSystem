@@ -3,7 +3,7 @@ function initPagination() {
 
     // 声明变量存储总记录数
    // var totalRecord = ${requestScope['PAGE-INFO'].total};
-
+    
     // 声明变量存储分页导航条显示时的属性设置
     var paginationProperties = {
         num_edge_entries: 3,			//边缘页数
@@ -13,6 +13,7 @@ function initPagination() {
         current_page: (window.pageNum-1),//当前页页码
         prev_text: "before",			//上一页文本
         next_text: "next"			//下一页文本
+
     };
 
     // 显示分页导航条
@@ -23,11 +24,11 @@ function initPagination() {
 function pageselectCallback(pageIndex, jq) {
 
     // pageIndex从0开始，pageNum从1开始
-    var pageNum = pageIndex + 1;
-
+   // var pageNum = pageIndex + 1;
+    window.pageNum = pageIndex+1;
     // 跳转页面
-    window.location.href = "user/to/page?pageNum=" + pageNum;
-
+ //   window.location.href = "user/to/page?pageNum=" + pageNum;
+    window.location.href = "user/to/page?pageNum="+(pageIndex + 1)+"&keyword="+window.keyword;
     return false;
 }
 

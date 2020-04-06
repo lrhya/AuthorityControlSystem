@@ -69,22 +69,13 @@
                                     placeholder="请输入邮箱地址"/>
                         </div>
                         <div class="form-group">
-                            <label for="InputDepartf">所在组织</label>
+                            <label for="InputDepartf">所属部门</label>
                             <input
                                     type="text"
                                     name="departFather"
                                     class="form-control"
                                     id="InputDepartf"
                                     placeholder="请输入所在组织"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="InputDeparts">所属部门</label>
-                            <input
-                                    type="text"
-                                    name="departSon"
-                                    class="form-control"
-                                    id="InputDeparts"
-                                    placeholder="请输入所属部门"/>
                         </div>
                         <button type="submit" class="btn btn-success">
                             <i class="glyphicon glyphicon-plus"></i> 新增
