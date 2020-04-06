@@ -92,7 +92,7 @@ public class CustomerHandler {
     public String queryForSearch(
             // 如果页面上没有提供对应的请求参数，那么可以使用defaultValue指定默认值
             @RequestParam(value="pageNum", defaultValue="1") Integer pageNum,
-            @RequestParam(value="pageSize", defaultValue="2") Integer pageSize,
+            @RequestParam(value="pageSize", defaultValue="10") Integer pageSize,
             @RequestParam(value="keyword", defaultValue="") String keyword,
             Model model) {
 

@@ -36,10 +36,10 @@
                         <!-- 模型对象中没有的属性不能使用form:hidden -->
                         <input type="hidden" name="pageNum" value="${param.pageNum }" />
 
-                        <div class="form-group">
+                  <%--      <div class="form-group">
                             <label for="exampleInputPassword1">id</label>
                             <form:input path="tId" cssClass="form-control"/>
-                        </div>
+                        </div>--%>
                         <div class="form-group">
                             <label for="exampleInputPassword1">角色</label>
                             <form:input path="tName" cssClass="form-control"/>

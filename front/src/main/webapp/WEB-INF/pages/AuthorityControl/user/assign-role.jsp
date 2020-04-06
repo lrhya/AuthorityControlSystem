@@ -42,8 +42,8 @@
 							<div class="form-group">
 								<label for="exampleInputPassword1">未分配角色列表</label><br>
 								<select
-									id="leftSelect" class="form-control" multiple size="10"
-									style="	width: 100px; overflow-y: auto;">
+									id="leftSelect" class="form-control" multiple size="15"
+									style="	width: 150px; overflow-y: auto;">
 									<c:forEach items="${requestScope.unAssignedRoleList }" var="role">
 										<option value="${role.tId }">${role.tName }</option>
 									</c:forEach>
@@ -63,7 +63,7 @@
 								<label for="exampleInputPassword1">已分配角色列表</label><br>
 								<select
 									id="rightSelect" name="roleIdList" class="form-control"
-									multiple size="10" style="width: 100px; overflow-y: auto;">
+									multiple size="15" style="width: 150px; overflow-y: auto;">
 									
 									<c:forEach items="${requestScope.assignedRoleList }" var="role">
 										<option value="${role.tId }">${role.tName }</option>

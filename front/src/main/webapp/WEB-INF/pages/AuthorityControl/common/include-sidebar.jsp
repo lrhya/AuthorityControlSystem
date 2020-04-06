@@ -12,7 +12,7 @@
                     <li style="height: 30px;"><a href="user/to/page"><i
                             class="glyphicon glyphicon-user"></i> 职员信息管理</a></li>
                     <li style="height: 30px;"><a href="role/to/page"><i
-                            class="glyphicon glyphicon-king"></i> 系统权限管理</a></li>
+                            class="glyphicon glyphicon-king"></i> 系统角色管理</a></li>
                     <li style="height: 30px;"><a href="depart/to/page"><i
                             class="glyphicon glyphicon-king"></i> 系统部门管理</a></li>
                     <li style="height: 30px;"><a href="menu/to/page"><i
@@ -26,7 +26,7 @@
                     <li style="height: 30px;"><a href="customer/query/for/search"><i
                             class="glyphicon glyphicon-picture"></i> 用户信息管理</a></li>
                     <li style="height: 30px;"><a href="customerRole/to/page"><i
-                            class="glyphicon glyphicon-equalizer"></i> 用户权限管理</a></li>
+                            class="glyphicon glyphicon-equalizer"></i> 用户角色管理</a></li>
 
                 </ul></li>
         </ul>

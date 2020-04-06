@@ -158,7 +158,7 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="glyphicon glyphicon-th-list"></i> 权限菜单列表
+                    <i class="glyphicon glyphicon-th-list"></i> 部门菜单列表
                     <div style="float: right; cursor: pointer;" data-toggle="modal"
                          data-target="#myModal">
                         <i class="glyphicon glyphicon-question-sign"></i>
