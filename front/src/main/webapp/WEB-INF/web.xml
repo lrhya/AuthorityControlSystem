@@ -7,15 +7,15 @@
 
     <display-name>Archetype Created Web Application</display-name>
 
-    <context-param>
+<!--    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:spring/spring-service.xml</param-value>
     </context-param>
 
-    <!-- Bootstraps the root web application context before servlet initialization -->
+    &lt;!&ndash; Bootstraps the root web application context before servlet initialization &ndash;&gt;
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+    </listener>-->
 
     <!--放行所有资源-->
     <servlet-mapping>
@@ -29,7 +29,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/spring-web.xml</param-value>
+            <param-value>classpath:spring/spring-web.xml,classpath:spring/spring-service.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -46,26 +46,32 @@
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-
         <init-param>
             <param-name>encoding</param-name>
             <param-value>UTF-8</param-value>
         </init-param>
-
         <init-param>
             <param-name>forceRequestEncoding</param-name>
             <param-value>true</param-value>
         </init-param>
-
         <init-param>
             <param-name>forceResponseEncoding</param-name>
             <param-value>true</param-value>
         </init-param>
-
     </filter>
-
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
