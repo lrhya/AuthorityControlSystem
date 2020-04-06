@@ -3,7 +3,7 @@ function initPagination() {
 
     // 声明变量存储总记录数
    // var totalRecord = ${requestScope['PAGE-INFO'].total};
-    
+
     // 声明变量存储分页导航条显示时的属性设置
     var paginationProperties = {
         num_edge_entries: 3,			//边缘页数

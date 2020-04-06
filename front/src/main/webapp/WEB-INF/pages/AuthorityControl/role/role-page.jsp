@@ -165,7 +165,7 @@
 
                 // 2.发送请求
                 $.ajax({
-                    "url":"role/save/role.json",
+                    "url":"role/save/role",
                     "type":"post",
                     "data":{
                         "roleName":roleName
@@ -209,10 +209,10 @@
 
                 // 1.获取当前按钮的roleId
                 window.roleId = $(this).attr("roleId");
-
+                console.log( window.roleId);
                 // 2.获取当前按钮所在行的roleName
-                var roleName = $(this).parents("tr").children("td:eq(2)").text();
-
+               var roleName = $(this).parents("tr").children("td:eq(2)").text();
+                console.log(roleName);
                 // 3.修改模态框中文本框的value值，目的是在显示roleName
                 $("#roleNameInputEdit").val(roleName);
 
@@ -232,14 +232,14 @@
 
                     return ;
                 }
-
+                // debugger
                 // 2.发送请求
                 $.ajax({
                     "url":"role/update/role.json",
                     "type":"post",
                     "data":{
-                        "id":window.roleId,
-                        "name":roleName
+                        "tId": window.roleId,
+                        "tName": roleName
                     },
                     "dataType":"json",
                     "success":function(response){
@@ -259,6 +259,12 @@
                         // 4.不管成功还是失败，关闭模态框
                         $("#editModal").modal("hide");
 
+                    },
+                    "error": function (err) {
+                        console.error("update err" + err)
+                    },
+                    "fail": function (fail) {
+                        console.error("update fail" + fail)
                     }
                 });
             });

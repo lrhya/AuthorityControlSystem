@@ -101,7 +101,7 @@ function generateTableBody(pageInfo) {
         var removeBtn = "<button roleId='"+role.tId+"' type='button' class='btn btn-danger btn-xs removeBtn'><i class=' glyphicon glyphicon-remove'></i></button>";
 
         var numberTd = "<td>"+(i+1)+"</td>";
-        var checkBoxTd = "<td><input roleid='"+role.tId+"' class='itemBox' type='checkbox'></td>";
+        var checkBoxTd = "<td><input roleId='"+role.tId+"' class='itemBox' type='checkbox'></td>";
         var roleNameTd = "<td>"+role.tName+"</td>";
         var btnTd = "<td>"+checkBtn+" "+pencilBtn+" "+removeBtn+"</td>";
 
